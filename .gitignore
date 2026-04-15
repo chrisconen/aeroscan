@@ -3,7 +3,7 @@ dist/
 .astro/
 .claude/
 VIDEÓK/
-images/
+/images/
 *.log
 .DS_Store
 Thumbs.db

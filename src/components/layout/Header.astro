@@ -1,0 +1,114 @@
+---
+import Navigation from './Navigation.astro';
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+  <!-- Top bar -->
+  <div class="bg-primary-dark text-white text-sm py-1.5">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <span class="hidden sm:inline">Drónos épületfelmérés | Keresés-mentés | Járőrszolgálat | Légi fotó & videó</span>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="tel:+36305696550" class="hover:text-accent transition-colors">+36 30 569 6550</a>
+        <a href="mailto:info@aeroscan.hu" class="hover:text-accent transition-colors">info@aeroscan.hu</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main header -->
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <img
+        src="/images/drón_épületfelmérés_állapot_elemzés_logó.webp"
+        alt="AeroScan logó"
+        width="48"
+        height="48"
+        class="rounded-lg"
+      />
+      <div>
+        <span class="font-heading text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+          AeroScan
+        </span>
+        <span class="block text-xs text-text-light">Drónos felmérés & elemzés</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <Navigation />
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+      aria-label="Menü megnyitása"
+      aria-expanded="false"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
+    <nav class="max-w-7xl mx-auto px-4 py-4 space-y-2">
+      <a href="/" class="block py-2 text-text hover:text-primary font-medium">Főoldal</a>
+
+      <details class="group">
+        <summary class="py-2 text-text hover:text-primary font-medium cursor-pointer list-none flex items-center justify-between">
+          Helyszínek
+          <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pl-4 space-y-1">
+          <a href="/gyor" class="block py-1.5 text-text-light hover:text-primary">Győr</a>
+          <a href="/sopron" class="block py-1.5 text-text-light hover:text-primary">Sopron</a>
+          <a href="/tatabanya" class="block py-1.5 text-text-light hover:text-primary">Tatabánya</a>
+          <a href="/budapest" class="block py-1.5 text-text-light hover:text-primary">Budapest</a>
+          <a href="/dunaujvaros" class="block py-1.5 text-text-light hover:text-primary">Dunaújváros</a>
+          <a href="/szeged" class="block py-1.5 text-text-light hover:text-primary">Szeged</a>
+          <a href="/pecs" class="block py-1.5 text-text-light hover:text-primary">Pécs</a>
+          <a href="/debrecen" class="block py-1.5 text-text-light hover:text-primary">Debrecen</a>
+        </div>
+      </details>
+
+      <details class="group">
+        <summary class="py-2 text-text hover:text-primary font-medium cursor-pointer list-none flex items-center justify-between">
+          Szolgáltatások
+          <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pl-4 space-y-1">
+          <a href="/epuletfelmeres" class="block py-1.5 text-text-light hover:text-primary">Épületfelmérés</a>
+          <a href="/kereses-mentes" class="block py-1.5 text-text-light hover:text-primary">Keresés-mentés</a>
+          <a href="/jaror-szolgalat" class="block py-1.5 text-text-light hover:text-primary">Járőrszolgálat</a>
+        </div>
+      </details>
+
+      <a href="/blog" class="block py-2 text-text hover:text-primary font-medium">Blog</a>
+      <a href="/kapcsolat" class="block py-2 text-text hover:text-primary font-medium">Kapcsolat</a>
+
+      <div class="pt-2 border-t border-gray-100">
+        <a
+          href="/kapcsolat"
+          class="block text-center bg-accent hover:bg-accent-dark text-white font-semibold py-2.5 px-4 rounded-lg transition-colors"
+        >
+          Árajánlat kérés
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

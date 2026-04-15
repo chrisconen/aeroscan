@@ -1,0 +1,44 @@
+---
+interface Props {
+  city?: string;
+  coordinates?: { lat: number; lng: number };
+}
+
+const { city, coordinates } = Astro.props;
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'AeroScan',
+  description: 'Professzionális drónos épületfelmérés, állapotelemzés, keresés-mentés és járőrszolgálat.',
+  url: 'https://aeroscan.hu',
+  telephone: '+36305696550',
+  email: 'info@aeroscan.hu',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Lepke utca 9',
+    addressLocality: city || 'Bodonhely',
+    postalCode: '9134',
+    addressCountry: 'HU',
+  },
+  ...(coordinates && {
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: coordinates.lat,
+      longitude: coordinates.lng,
+    },
+  }),
+  areaServed: city
+    ? { '@type': 'City', name: city }
+    : { '@type': 'Country', name: 'Magyarország' },
+  serviceType: [
+    'Drónos épületfelmérés',
+    'Állapotelemzés',
+    'Keresés-mentés',
+    'Járőrszolgálat',
+    'Légi fotózás és videózás',
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />

@@ -1,0 +1,207 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ContactCTA from '@/components/home/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="Járőrszolgálat - Drónos járőrözés"
+  description="Drónos járőrszolgálat ipari létesítmények, mezőgazdasági területek és magánbirtokok felügyeletére. Valós idejű monitoring, hőkamera, GPS."
+>
+  <!-- Hero -->
+  <section class="bg-primary py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-white">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold leading-tight mb-4">
+        Drónos járőrszolgálat
+      </h1>
+      <p class="text-xl text-gray-200 mb-6 max-w-2xl">
+        Biztonság növelése, költséghatékony megfigyelés és azonnali reagálás — modern dróntechnológiával.
+      </p>
+      <a href="/kapcsolat" class="inline-block bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+        Árajánlat kérés
+      </a>
+    </div>
+  </section>
+
+  <!-- A lényeg -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+        A drónos járőrszolgálat lényege
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { icon: '🛡️', title: 'Biztonság növelése', desc: 'Behatolók, szokatlan tevékenységek vagy veszélyforrások azonnali észlelése.' },
+          { icon: '💰', title: 'Költséghatékonyság', desc: 'Alacsonyabb működési költségek a hagyományos vagyonvédelemhez képest.' },
+          { icon: '🚀', title: 'Rugalmasság', desc: 'Nagy területek gyors és hatékony lefedése.' },
+          { icon: '📊', title: 'Adatgyűjtés', desc: 'Részletes dokumentáció és elemzés biztosítása.' },
+        ].map((item) => (
+          <div class="text-center p-6 bg-surface rounded-2xl">
+            <div class="text-3xl mb-3" aria-hidden="true">{item.icon}</div>
+            <h3 class="font-heading font-bold text-primary mb-2">{item.title}</h3>
+            <p class="text-sm text-text-light">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Hogyan működik -->
+  <section class="py-16 lg:py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+        Hogyan működik a drónos járőrszolgálat?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {[
+          { step: '1', title: 'Igényfelmérés', desc: 'Tervezés az ügyfél igényei alapján.' },
+          { step: '2', title: 'Programozás', desc: 'Előre programozott járőr útvonalak.' },
+          { step: '3', title: 'Monitoring', desc: 'Valós idejű megfigyelés és reagálás.' },
+          { step: '4', title: 'Jelentés', desc: 'Adatfeldolgozás és jelentéskészítés.' },
+          { step: '5', title: 'Utókövetés', desc: 'Útvonal optimalizálás és finomhangolás.' },
+        ].map((item) => (
+          <div class="text-center">
+            <div class="w-12 h-12 mx-auto mb-3 bg-primary text-white rounded-full flex items-center justify-center font-heading font-bold">
+              {item.step}
+            </div>
+            <h3 class="font-heading font-bold text-sm text-primary mb-1">{item.title}</h3>
+            <p class="text-xs text-text-light">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Alkalmazási területek -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+        Alkalmazási területek
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'Ipari létesítmények', desc: 'Raktárak, gyárak, logisztikai központok megfigyelése. Értéktárgyak védelme. Építkezések felügyelete, lopások és vandalizmus megelőzése.' },
+          { title: 'Mezőgazdasági területek', desc: 'Nagy kiterjedésű földterületek, ültetvények védelme vadállatok vagy illetéktelen behatolók ellen. Vadkárfelmérés hőkamerával.' },
+          { title: 'Magánterületek', desc: 'Magánbirtokok, villák, nyaralók felügyelete. Értéktárgyak (járművek, kerti berendezések) védelme.' },
+          { title: 'Rendezvények', desc: 'Tömegrendezvények (koncertek, fesztiválok) megfigyelése felülről. Gyanús tevékenységek észlelése.' },
+          { title: 'Kritikus infrastruktúra', desc: 'Energetikai létesítmények (szélerőművek, transzformátorállomások) védelme. Illetéktelen behatolások vagy technikai hibák észlelése.' },
+        ].map((item) => (
+          <div class="p-6 bg-surface rounded-2xl hover:bg-white hover:shadow-lg transition-all">
+            <h3 class="font-heading font-bold text-primary mb-2">{item.title}</h3>
+            <p class="text-sm text-text-light leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Árak -->
+  <section class="py-16 lg:py-24 bg-primary-dark text-white" id="arak">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-4">
+        Árak és csomagok
+      </h2>
+      <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        Válassza az igényeinek legmegfelelőbb csomagot, vagy kérjen egyedi árajánlatot.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Alap -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h3 class="font-heading font-bold text-xl mb-2">Alap csomag</h3>
+          <p class="text-accent text-sm font-medium mb-4">Vagyonvédelem</p>
+          <div class="mb-6">
+            <span class="font-heading text-3xl font-bold">150 000 Ft</span>
+            <span class="text-gray-400">/hó-tól</span>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-300 mb-8">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Heti 1-2 járőrözés
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Valós idejű videóátvitel
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Alapvető jelentéskészítés
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Min. 3 hónapos szerződés
+            </li>
+          </ul>
+          <a href="/kapcsolat" class="block text-center bg-white/20 hover:bg-accent text-white font-semibold py-3 rounded-lg transition-colors">
+            Ajánlat kérés
+          </a>
+        </div>
+
+        <!-- Prémium -->
+        <div class="bg-accent rounded-2xl p-8 shadow-2xl relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-accent text-xs font-bold px-4 py-1 rounded-full">
+            NÉPSZERŰ
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-2">Prémium csomag</h3>
+          <p class="text-white/80 text-sm font-medium mb-4">Ipari ellenőrzés</p>
+          <div class="mb-6">
+            <span class="font-heading text-3xl font-bold">250 000 Ft</span>
+            <span class="text-white/70">/hó-tól</span>
+          </div>
+          <ul class="space-y-3 text-sm text-white/90 mb-8">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-white mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Részletes ipari felmérések
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-white mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Hőkamerás elemzések
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-white mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Heti jelentések
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-white mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Egyedi megállapodás
+            </li>
+          </ul>
+          <a href="/kapcsolat" class="block text-center bg-white text-accent hover:bg-gray-100 font-bold py-3 rounded-lg transition-colors">
+            Ajánlat kérés
+          </a>
+        </div>
+
+        <!-- Egyedi -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h3 class="font-heading font-bold text-xl mb-2">Egyedi megbízás</h3>
+          <p class="text-accent text-sm font-medium mb-4">Eseti feladatok</p>
+          <div class="mb-6">
+            <span class="font-heading text-3xl font-bold">50 000 Ft</span>
+            <span class="text-gray-400">/alkalom-tól</span>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-300 mb-8">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Egyszeri feladatok
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Katasztrófaelhárítás
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Mezőgazdasági monitoring
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+              Egyedi árajánlat
+            </li>
+          </ul>
+          <a href="/kapcsolat" class="block text-center bg-white/20 hover:bg-accent text-white font-semibold py-3 rounded-lg transition-colors">
+            Ajánlat kérés
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>

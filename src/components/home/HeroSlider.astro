@@ -1,0 +1,76 @@
+---
+const badges = [
+  { label: 'Épületfelmérés', href: '/epuletfelmeres', image: 'images/epuletfelmeres-allapotelemzes-dronnal.webp' },
+  { label: 'Fotó & videó', href: '/kapcsolat', icon: '📸' },
+  { label: 'Keresés & mentés', href: '/kereses-mentes', image: 'images/dronos-kereses-mentes.webp' },
+  { label: 'Járőrözés', href: '/jaror-szolgalat', icon: '🛡️' },
+];
+---
+
+<section class="relative min-h-[600px] lg:min-h-[700px] overflow-hidden bg-primary-dark">
+  <div class="relative max-w-7xl mx-auto px-4 py-16 lg:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[500px]">
+      <!-- Bal oldal: szöveg + badge-ek -->
+      <div class="text-white z-10">
+        <p class="text-sm font-semibold uppercase tracking-widest text-white/80 mb-4">
+          AeroScan — Drónos szolgáltatások
+        </p>
+        <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+          Professzionális<br />
+          <span class="text-primary-dark">drónos megoldások</span>
+        </h1>
+        <p class="text-lg md:text-xl text-white/90 mb-10 max-w-lg">
+          4K légi felvételek - drónos fotózás és videózás, precíz épületfelmérés, drónos keresés-mentés és járőrözés — szakértőktől, országos lefedettséggel.
+        </p>
+
+        <!-- 4 service badge -->
+        <div class="grid grid-cols-2 gap-3 mb-10">
+          {badges.map((badge) => (
+            <a
+              href={badge.href}
+              class="flex items-center gap-3 bg-white/15 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 hover:bg-white/25 transition-all duration-300 group"
+            >
+              {badge.image ? (
+                <img src={`/${badge.image}`} alt="" class="w-8 h-8 object-contain" aria-hidden="true" />
+              ) : (
+                <span class="text-2xl" aria-hidden="true">{badge.icon}</span>
+              )}
+              <span class="font-semibold text-sm">{badge.label}</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- CTA gombok -->
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="/kapcsolat"
+            class="bg-primary-dark hover:bg-primary text-white font-bold py-3 px-8 rounded-lg transition-colors text-lg shadow-lg"
+          >
+            Árajánlat kérés
+          </a>
+          <a
+            href="tel:+36305696550"
+            class="border-2 border-white/50 hover:border-white text-white font-semibold py-3 px-8 rounded-lg transition-colors text-lg"
+          >
+            +36 30 569 6550
+          </a>
+        </div>
+      </div>
+
+      <!-- Jobb oldal: drón kép placeholder -->
+      <div class="relative flex items-center justify-center z-10">
+        <div class="relative w-full max-w-lg aspect-square">
+          <!-- Kép helye -->
+          <div class="relative w-full h-full rounded-3xl overflow-hidden flex items-center justify-center">
+            <img
+              src="/images/dronos-epuletfelmeres-fotozas-videozas.webp"
+              alt="AeroScan drón"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>

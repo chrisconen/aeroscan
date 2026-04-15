@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.claude/
+VIDEÓK/
+images/
+*.log
+.DS_Store
+Thumbs.db

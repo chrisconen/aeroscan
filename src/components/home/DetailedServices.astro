@@ -1,0 +1,57 @@
+---
+const detailedServices = [
+  {
+    title: 'Keresés és mentés',
+    description: 'Eltűnt személyek, gyermekek, túrázók vagy háziállatok felkutatása kül- és belterületeken. Reflektoros drónnal akár éjjel is. Gyors reagálás, együttműködés hatóságokkal és helyi mentőcsapatokkal.',
+    icon: '🔦',
+  },
+  {
+    title: 'Drónos járőrszolgálat',
+    description: 'Ipari parkok, raktárak, építkezések vagy mezőgazdasági területek biztonságos megfigyelése. Illegális behatolás, lopás vagy rongálás megelőzése és dokumentálása.',
+    icon: '🛡️',
+  },
+  {
+    title: 'Terep- és objektumfelderítés',
+    description: 'Nehezen megközelíthető területek, erdős vagy dombos vidékek feltérképezése gyorsan és pontosan — akár valós idejű videóátvitellel.',
+    icon: '🗺️',
+  },
+  {
+    title: 'Ipari és építőipari ellenőrzések',
+    description: 'Magas vagy veszélyes helyek, ipari létesítmények, kémények vizsgálata. Kivitelezési szakaszok dokumentálása, építési hibák kiszűrése emberi kockázat nélkül.',
+    icon: '🏗️',
+  },
+  {
+    title: 'Katasztrófavédelmi támogatás',
+    description: 'Árvíz, tűz vagy más katasztrófa esetén gyors helyzetfelmérés, forró pontok azonosítása. Hatékony döntéshozatal drónos adatok alapján.',
+    icon: '🚨',
+  },
+  {
+    title: 'Drónos média és reklám',
+    description: 'Látványos légi felvételek készítése rendezvényekről, városnézetekről, ipari vagy ingatlan-objektumokról. Profi tartalom közösségi médiához és weboldalakhoz.',
+    icon: '🎬',
+  },
+];
+---
+
+<section class="py-16 lg:py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        Drónos felmérés, keresés, járőrözés és felderítés
+      </h2>
+      <p class="text-text-light text-lg max-w-2xl mx-auto">
+        Széles körű szolgáltatásaink az épületfelmérés mellett a keresés-mentéstől a katasztrófavédelmi támogatásig terjednek.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {detailedServices.map((service) => (
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+          <div class="text-3xl mb-4" aria-hidden="true">{service.icon}</div>
+          <h3 class="font-heading font-bold text-lg text-primary mb-3">{service.title}</h3>
+          <p class="text-sm text-text-light leading-relaxed">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,109 @@
+---
+import { contactInfo, socialLinks } from '@/data/navigation';
+import NewsletterForm from '@/components/forms/NewsletterForm.astro';
+---
+
+<footer class="bg-primary-dark text-white">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Logo & description -->
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-3 mb-4">
+          <img
+            src="/images/drón_épületfelmérés_állapot_elemzés_logó.webp"
+            alt="AeroScan logó"
+            width="40"
+            height="40"
+            class="rounded-lg"
+          />
+          <span class="font-heading text-xl font-bold">AeroScan</span>
+        </a>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+          Professzionális drónos épületfelmérés, állapotelemzés és légi szolgáltatások Magyarország szerte.
+        </p>
+        <p class="text-sm font-medium mb-2">Hírlevél feliratkozás</p>
+        <NewsletterForm />
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-4">Szolgáltatások</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/epuletfelmeres" class="text-gray-400 hover:text-accent transition-colors">Épületfelmérés</a></li>
+          <li><a href="/kereses-mentes" class="text-gray-400 hover:text-accent transition-colors">Keresés-mentés</a></li>
+          <li><a href="/jaror-szolgalat" class="text-gray-400 hover:text-accent transition-colors">Járőrszolgálat</a></li>
+          <li><a href="/blog" class="text-gray-400 hover:text-accent transition-colors">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Cities -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-4">Helyszínek</h3>
+        <ul class="space-y-2 text-sm grid grid-cols-2 gap-x-4">
+          <li><a href="/gyor" class="text-gray-400 hover:text-accent transition-colors">Győr</a></li>
+          <li><a href="/sopron" class="text-gray-400 hover:text-accent transition-colors">Sopron</a></li>
+          <li><a href="/budapest" class="text-gray-400 hover:text-accent transition-colors">Budapest</a></li>
+          <li><a href="/tatabanya" class="text-gray-400 hover:text-accent transition-colors">Tatabánya</a></li>
+          <li><a href="/szeged" class="text-gray-400 hover:text-accent transition-colors">Szeged</a></li>
+          <li><a href="/pecs" class="text-gray-400 hover:text-accent transition-colors">Pécs</a></li>
+          <li><a href="/debrecen" class="text-gray-400 hover:text-accent transition-colors">Debrecen</a></li>
+          <li><a href="/dunaujvaros" class="text-gray-400 hover:text-accent transition-colors">Dunaújváros</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-4">Elérhetőség</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 mt-0.5 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span class="text-gray-400">{contactInfo.address}</span>
+          </li>
+          <li>
+            <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} class="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors">
+              <svg class="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              {contactInfo.phone}
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contactInfo.email}`} class="flex items-center gap-2 text-gray-400 hover:text-accent transition-colors">
+              <svg class="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              {contactInfo.email}
+            </a>
+          </li>
+        </ul>
+
+        <!-- Social -->
+        <div class="flex gap-3 mt-4">
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors"
+              aria-label={link.label}
+            >
+              <span class="text-sm">{link.icon === 'facebook' ? 'f' : link.icon === 'youtube' ? '▶' : link.icon === 'linkedin' ? 'in' : 'P'}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <p>&copy; {new Date().getFullYear()} AeroScan. Minden jog fenntartva.</p>
+      <div class="flex gap-4">
+        <a href="/adatvedelmi-nyilatkozat" class="hover:text-gray-300 transition-colors">Adatvédelem</a>
+        <a href="/impresszum" class="hover:text-gray-300 transition-colors">Impresszum</a>
+      </div>
+    </div>
+  </div>
+</footer>

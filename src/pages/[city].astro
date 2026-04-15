@@ -1,0 +1,102 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceCards from '@/components/home/ServiceCards.astro';
+import WhyDrone from '@/components/home/WhyDrone.astro';
+import ContactCTA from '@/components/home/ContactCTA.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const cities = await getCollection('cities');
+  return cities.map((city) => ({
+    params: { city: city.data.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+const { Content } = await render(city);
+---
+
+<BaseLayout
+  title={`Drónos szolgáltatások ${city.data.cityName}`}
+  description={city.data.metaDescription}
+  city={city.data.cityName}
+  coordinates={city.data.coordinates}
+>
+  <!-- Hero -->
+  <section class="bg-primary py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-white">
+      <nav class="text-sm text-gray-300 mb-4">
+        <a href="/" class="hover:text-white transition-colors">Főoldal</a>
+        <span class="mx-2">/</span>
+        <span>{city.data.cityName}</span>
+      </nav>
+      <h1 class="font-heading text-4xl md:text-5xl font-bold leading-tight mb-4">
+        Drónos szolgáltatások<br />{city.data.cityName}
+      </h1>
+      <p class="text-lg text-gray-200 mb-6 max-w-2xl">
+        {city.data.heroSubtitle}
+      </p>
+      <a
+        href="/kapcsolat"
+        class="inline-block bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+      >
+        Árajánlat kérés
+      </a>
+    </div>
+  </section>
+
+  <ServiceCards city={city.data.cityName} />
+
+  <!-- City content -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-primary prose-a:text-accent">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- Landmarks & info -->
+  {(city.data.landmarks || city.data.nearbyTowns) && (
+    <section class="py-12 bg-surface">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {city.data.landmarks && (
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 class="font-heading font-bold text-lg text-primary mb-4">Kiemelt helyszínek</h3>
+              <ul class="space-y-2">
+                {city.data.landmarks.map((landmark) => (
+                  <li class="flex items-center gap-2 text-text-light">
+                    <svg class="w-4 h-4 text-accent shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                    </svg>
+                    {landmark}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {city.data.nearbyTowns && (
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 class="font-heading font-bold text-lg text-primary mb-4">Környező települések</h3>
+              <ul class="space-y-2">
+                {city.data.nearbyTowns.map((town) => (
+                  <li class="flex items-center gap-2 text-text-light">
+                    <svg class="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    {town}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <WhyDrone />
+  <ContactCTA />
+</BaseLayout>

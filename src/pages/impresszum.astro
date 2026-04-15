@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { contactInfo } from '@/data/navigation';
+---
+
+<BaseLayout
+  title="Impresszum"
+  description="Az AeroScan weboldal impresszuma. A szolgáltató adatai, elérhetőségek és jogi információk."
+>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4">
+      <nav class="text-sm text-text-light mb-6">
+        <a href="/" class="hover:text-primary transition-colors">Főoldal</a>
+        <span class="mx-2">/</span>
+        <span class="text-text">Impresszum</span>
+      </nav>
+
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-8">Impresszum</h1>
+
+      <div class="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-primary">
+        <h2>A szolgáltató adatai</h2>
+        <table>
+          <tbody>
+            <tr><td><strong>Cégnév</strong></td><td>AeroScan</td></tr>
+            <tr><td><strong>Székhely</strong></td><td>{contactInfo.address}</td></tr>
+            <tr><td><strong>Megye</strong></td><td>{contactInfo.county}</td></tr>
+            <tr><td><strong>Email</strong></td><td><a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a></td></tr>
+            <tr><td><strong>Telefon</strong></td><td><a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}>{contactInfo.phone}</a></td></tr>
+          </tbody>
+        </table>
+
+        <h2>Tárhelyszolgáltató</h2>
+        <p>A weboldal tárhelyét biztosító szolgáltató adatai a deploy platformtól függően kerülnek feltüntetésre.</p>
+
+        <h2>Szerzői jogok</h2>
+        <p>
+          A weboldalon megjelenő tartalmak (szövegek, képek, videók, grafikai elemek) szerzői jogi védelem alatt állnak.
+          A tartalmak másolása, terjesztése vagy felhasználása kizárólag az AeroScan előzetes írásbeli engedélyével lehetséges.
+        </p>
+
+        <h2>Felelősségkizárás</h2>
+        <p>
+          Az AeroScan mindent megtesz a weboldalon megjelenő információk pontosságáért és naprakészségéért,
+          azonban nem vállal felelősséget az esetleges pontatlanságokból, elírásokból vagy technikai hibákból eredő károkért.
+        </p>
+
+        <h2>Külső hivatkozások</h2>
+        <p>
+          A weboldalon elhelyezett külső hivatkozások tartalmáért az AeroScan nem vállal felelősséget.
+          A hivatkozott oldalak tartalmáért kizárólag azok üzemeltetői felelnek.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

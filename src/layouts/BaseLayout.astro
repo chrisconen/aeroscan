@@ -1,0 +1,35 @@
+---
+import SEOHead from '@/components/seo/SEOHead.astro';
+import StructuredData from '@/components/seo/StructuredData.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import CookieBanner from '@/components/layout/CookieBanner.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  type?: 'website' | 'article';
+  city?: string;
+  coordinates?: { lat: number; lng: number };
+}
+
+const { title, description, ogImage, type, city, coordinates } = Astro.props;
+---
+
+<!doctype html>
+<html lang="hu">
+  <head>
+    <SEOHead title={title} description={description} ogImage={ogImage} type={type} />
+    <StructuredData city={city} coordinates={coordinates} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <CookieBanner />
+  </body>
+</html>

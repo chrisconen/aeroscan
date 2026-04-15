@@ -1,0 +1,60 @@
+---
+const capabilities = [
+  'Épületek, hidak, tornyok biztonságos felmérése',
+  'Eltűnt személyek, háziállatok keresése a levegőből',
+  'Járőrözés, felderítés, adatgyűjtés a levegőből',
+  'Rendezvények fotózása és videókészítés a levegőből',
+];
+
+const features = [
+  {
+    title: 'Villámgyors bevetés',
+    description: 'Nincs várakozás, nincs terepfelmérés — a drón néhány perc alatt a levegőbe emelkedik és megkezdi a terület átvizsgálását. Időt nyerünk, amikor minden másodperc számít.',
+  },
+  {
+    title: 'Precíz helymeghatározás',
+    description: '6x digitális nagyítással a nagy felbontású kamera éles képeket biztosít akár nagy magasságból is, így gyorsan felderítjük a mozgást, elhagyott tárgyakat vagy gyanús jeleket a terepen.',
+  },
+  {
+    title: 'Éjszakai keresés',
+    description: 'A drónra szerelhető reflektor segít az esti keresésben, míg a hangszóróval utasításokat, hívószavakat közvetíthetünk — ideális eltűnt személy vagy háziállat esetén.',
+  },
+];
+---
+
+<section class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Bal oldal: technológia -->
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">
+          Legmodernebb dróntechnológia
+        </h2>
+        <p class="text-text-light text-lg mb-6 leading-relaxed">
+          A legmodernebb DJI drónokkal dolgozunk. 4K HD videók és fotók, reflektoros és élőképes
+          megoldásainkkal gyorsan, hatékonyan és biztonságosan dolgozunk akár extrém körülmények között is.
+        </p>
+        <ul class="space-y-3">
+          {capabilities.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-text-light">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Jobb oldal: képességek -->
+      <div class="space-y-6">
+        {features.map((feature) => (
+          <div class="bg-surface rounded-2xl p-6">
+            <h3 class="font-heading font-bold text-lg text-primary mb-2">{feature.title}</h3>
+            <p class="text-sm text-text-light leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

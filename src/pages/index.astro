@@ -1,0 +1,27 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroSlider from '@/components/home/HeroSlider.astro';
+import IntroSection from '@/components/home/IntroSection.astro';
+import ServiceCards from '@/components/home/ServiceCards.astro';
+import DetailedServices from '@/components/home/DetailedServices.astro';
+import WhyDrone from '@/components/home/WhyDrone.astro';
+import TechSection from '@/components/home/TechSection.astro';
+import QualitySection from '@/components/home/QualitySection.astro';
+import TeamSection from '@/components/home/TeamSection.astro';
+import ContactCTA from '@/components/home/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="Főoldal"
+  description="AeroScan - Professzionális drónos épületfelmérés, állapotelemzés, keresés-mentés és járőrszolgálat. Országos lefedettség."
+>
+  <HeroSlider />
+  <IntroSection />
+  <ServiceCards />
+  <DetailedServices />
+  <WhyDrone />
+  <TechSection />
+  <QualitySection />
+  <TeamSection />
+  <ContactCTA />
+</BaseLayout>

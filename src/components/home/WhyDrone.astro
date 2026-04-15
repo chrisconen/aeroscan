@@ -1,0 +1,43 @@
+---
+import { whyDrone } from '@/data/services';
+
+const icons = {
+  Gyorsaság: '⚡',
+  Biztonság: '🛡️',
+  Pontosság: '🎯',
+  Költséghatékonyság: '💰',
+  Dokumentáció: '📋',
+  Innováció: '🔬',
+};
+---
+
+<section class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        Miért válasszon drónos felmérést?
+      </h2>
+      <p class="text-text-light text-lg max-w-2xl mx-auto">
+        A drónos technológia forradalmasítja az épületfelmérést és állapotelemzést.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {whyDrone.map((item) => (
+        <div class="flex gap-4 p-6 rounded-2xl bg-surface hover:bg-white hover:shadow-lg transition-all duration-300">
+          <div class="text-3xl shrink-0" aria-hidden="true">
+            {icons[item.title as keyof typeof icons]}
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-lg text-primary mb-2">
+              {item.title}
+            </h3>
+            <p class="text-sm text-text-light leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

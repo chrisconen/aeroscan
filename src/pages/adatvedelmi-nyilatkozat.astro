@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Adatvédelmi nyilatkozat"
+  description="Az AeroScan adatvédelmi nyilatkozata. Tájékoztatás a személyes adatok kezeléséről a GDPR előírásainak megfelelően."
+>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4">
+      <nav class="text-sm text-text-light mb-6">
+        <a href="/" class="hover:text-primary transition-colors">Főoldal</a>
+        <span class="mx-2">/</span>
+        <span class="text-text">Adatvédelmi nyilatkozat</span>
+      </nav>
+
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-8">Adatvédelmi nyilatkozat</h1>
+
+      <div class="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-primary">
+        <p><strong>Hatályos:</strong> 2025. április 1-től</p>
+
+        <h2>1. Az adatkezelő</h2>
+        <p>
+          <strong>Név:</strong> AeroScan<br />
+          <strong>Székhely:</strong> 9134 Bodonhely, Lepke utca 9.<br />
+          <strong>Email:</strong> info@aeroscan.hu<br />
+          <strong>Telefon:</strong> +36 30 569 6550
+        </p>
+
+        <h2>2. A kezelt személyes adatok köre</h2>
+        <p>Weboldalunkon az alábbi személyes adatokat gyűjtjük:</p>
+        <ul>
+          <li>Név (vezetéknév, keresztnév)</li>
+          <li>Email cím</li>
+          <li>Telefonszám</li>
+          <li>Lakcím (opcionális)</li>
+          <li>Az üzenetben megadott egyéb adatok</li>
+        </ul>
+
+        <h2>3. Az adatkezelés célja és jogalapja</h2>
+        <ul>
+          <li><strong>Kapcsolatfelvétel, árajánlat készítése:</strong> Az Ön hozzájárulása alapján (GDPR 6. cikk (1) a) pont).</li>
+          <li><strong>Hírlevél küldése:</strong> Az Ön kifejezett hozzájárulása alapján.</li>
+          <li><strong>Süti (cookie) kezelés:</strong> Az Ön hozzájárulása alapján.</li>
+        </ul>
+
+        <h2>4. Az adatkezelés időtartama</h2>
+        <p>
+          A személyes adatokat az adatkezelés céljának megvalósulásáig, de legfeljebb az Ön hozzájárulásának visszavonásáig kezeljük.
+          A hozzájárulás bármikor visszavonható az info@aeroscan.hu email címen.
+        </p>
+
+        <h2>5. Az Ön jogai</h2>
+        <p>A GDPR alapján Önt az alábbi jogok illetik meg:</p>
+        <ul>
+          <li>Hozzáférési jog</li>
+          <li>Helyesbítéshez való jog</li>
+          <li>Törléshez való jog ("elfeledtetéshez való jog")</li>
+          <li>Adatkezelés korlátozásához való jog</li>
+          <li>Adathordozhatósághoz való jog</li>
+          <li>Tiltakozáshoz való jog</li>
+        </ul>
+
+        <h2>6. Sütik (cookie-k)</h2>
+        <p>
+          Weboldalunk technikai sütiket használ a megfelelő működés biztosításához.
+          Analitikai sütiket csak az Ön kifejezett hozzájárulásával alkalmazunk.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Süti neve</th><th>Cél</th><th>Lejárat</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>cookie-consent</td><td>Süti hozzájárulás tárolása</td><td>1 év</td></tr>
+          </tbody>
+        </table>
+
+        <h2>7. Adatfeldolgozók</h2>
+        <p>Az Ön adatait az alábbi adatfeldolgozók segítségével kezeljük:</p>
+        <ul>
+          <li><strong>Formspree:</strong> Kapcsolati űrlap feldolgozása</li>
+          <li><strong>Google Fonts:</strong> Betűtípusok betöltése</li>
+        </ul>
+
+        <h2>8. Jogorvoslati lehetőségek</h2>
+        <p>
+          Amennyiben úgy érzi, hogy személyes adatai kezelése során jogsérelem érte, panaszával fordulhat a
+          Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH):
+        </p>
+        <p>
+          <strong>Cím:</strong> 1055 Budapest, Falk Miksa utca 9-11.<br />
+          <strong>Telefon:</strong> +36 1 391 1400<br />
+          <strong>Web:</strong> www.naih.hu
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

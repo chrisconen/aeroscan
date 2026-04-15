@@ -1,0 +1,28 @@
+# Régi WP város oldalak -> új URL-ek
+/dronos-felmeres-allapotelemzes-gyor /gyor 301
+/dron-foto-video-felmeres-kereses-jarorozes-budapest /budapest 301
+/dron-foto-video-epuletfelmeres-kereses-jarorozes-szeged /szeged 301
+/dronos-foto-video-epuletfelmeres-kereses-jarorozes-sopron /sopron 301
+/dronos-foto-video-dunaujvaros /dunaujvaros 301
+/dronos-foto-video-kereses-mentes-felmeres-tatabanya /tatabanya 301
+/dronos-foto-video-kereses-mentes-felmeres-tatabanya-debrecen /debrecen 301
+/dronos-foto-video-kereses-mentes-felmeres-tatabanya-pecs /pecs 301
+
+# Régi WP szolgáltatás oldalak
+/jarorszolgalat /jaror-szolgalat 301
+/kereses-mentes-felderites-eltunt-szemely-haziallat /kereses-mentes 301
+/dronos-kereses-felderites-mentes /kereses-mentes 301
+/elmezes-allapotfelmeres-dronnal-portfolio /epuletfelmeres 301
+
+# Régi WP blog oldalak -> új blog URL-ek
+/felmeres-allapotelemzes-dronnal-blog /blog 301
+/biztonsagos-koltseghatekony-megoldas-nagy-teruletek-felmeresere-drontechnologia-az-ipari-felhasznalasban /blog/drontechnologia-ipari-felhasznalasban 301
+/hogyan-zajlik-egy-professzionalis-dronfelmeres-lepesrol-lepesre /blog/professzionalis-dronfelmeres-lepesrol-lepesre 301
+/innovativ-technologiak-amelyek-uj-szintre-emelik-a-felmeresek-minoseget /blog/innovativ-technologiak-felmeresek 301
+/ipari-alkalmazasok-hol-es-hogyan-hasznosithatok-a-dronos-felmeresek /blog/ipari-alkalmazasok-dronos-felmeresek 301
+/miert-eri-meg-dronnal-vegezni-a-legi-felmereseket /blog/miert-eri-meg-dronnal-legi-felmereseket 301
+/preciz-adatok-rovid-hataridovel-hogyan-segitheti-projektjet-egy-dronos-felmeres /blog/preciz-adatok-rovid-hataridovel 301
+
+# Régi WP egyéb oldalak
+/felmeres-allapotelemzes-dronnal-kapcsolat /kapcsolat 301
+/893 / 301

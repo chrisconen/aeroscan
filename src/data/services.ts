@@ -61,6 +61,6 @@ export const whyDrone = [
   },
   {
     title: 'Innováció',
-    description: 'Termál kamerás vizsgálat, multispektrális elemzés és AI-alapú hibadekció.',
+    description: '4K zoom vizsgálat, részletes légi elemzés és precíz dokumentáció.',
   },
 ] as const;

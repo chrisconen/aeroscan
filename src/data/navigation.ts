@@ -16,6 +16,7 @@ export const mainNav = [
   {
     label: 'Szolgáltatások',
     children: [
+      { label: 'Elveszett kisállat keresés', href: '/elveszett-kisallat-kereses-dronnal' },
       { label: 'Épületfelmérés', href: '/epuletfelmeres' },
       { label: 'Keresés-mentés', href: '/kereses-mentes' },
       { label: 'Járőrszolgálat', href: '/jaror-szolgalat' },

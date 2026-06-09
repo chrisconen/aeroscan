@@ -1,5 +1,5 @@
 ---
-import { team } from '@/data/team';
+import { pilot } from '@/data/team';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
@@ -9,35 +9,44 @@ const posts = (await getCollection('blog'))
 
 <section class="py-16 lg:py-24 bg-surface">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
-        Csapatunk
-      </h2>
-      <p class="text-text-light text-lg max-w-2xl mx-auto">
-        Tapasztalt szakemberek, akik szenvedélyesen dolgoznak a legjobb eredményekért.
-      </p>
-    </div>
+    <!-- A pilóta -->
+    <div class="max-w-3xl mx-auto mb-16">
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+          A pilóta
+        </h2>
+        <p class="text-text-light text-lg">
+          Egyetlen, elérhető, valódi ember — aki személyesen megy ki és keres.
+        </p>
+      </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
-      {team.map((member) => (
-        <div class="text-center group">
-          <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200 ring-4 ring-white shadow-lg">
-            <img
-              src={member.image}
-              alt={member.name}
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              loading="lazy"
-              onerror="this.style.display='none'"
-            />
-          </div>
-          <h3 class="font-heading font-bold text-lg text-primary">{member.name}</h3>
-          <p class="text-text-light text-sm">{member.role}</p>
+      <div class="flex flex-col sm:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-sm">
+        <div class="w-80 h-80 shrink-0 rounded-full overflow-hidden bg-gray-200 ring-6 ring-white shadow-lg">
+          <img
+            src={pilot.image}
+            alt={pilot.name}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
-      ))}
+        <div>
+          <h3 class="font-heading font-bold text-xl text-primary mb-1">{pilot.name}</h3>
+          <p class="text-accent font-semibold text-sm mb-3">{pilot.role}</p>
+          <p class="text-text-light leading-relaxed mb-3">
+            Osztrák drónvezetői engedéllyel rendelkező, bejegyzett drónos fotó- és videószolgáltató.
+            Számlaképes vállalkozás, teljes biztosítással.
+          </p>
+          <!-- TODO: Chris, írd ide a saját, személyes mondatodat arról, miért csinálod ezt.
+               Pl.: "Azért keresek elveszett állatokat drónnal, mert..." -->
+          <p class="text-text-light text-sm italic">
+            „Én is kutyás vagyok, tudom milyen érzés, amikor elveszik egy kedvenc. Ezért csinálom, hogy segítsek megtalálni őket."
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- Blog ajánló -->
-    <div class="mt-16">
+    <div>
       <div class="text-center mb-8">
         <h3 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-2">
           Legújabb blog bejegyzéseink

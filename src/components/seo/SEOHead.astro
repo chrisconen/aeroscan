@@ -15,8 +15,8 @@ const {
   type = 'website',
 } = Astro.props;
 
-const siteName = 'AeroScan - Drónos Felmérés & Állapotelemzés';
-const fullTitle = title === 'Főoldal' ? siteName : `${title} | AeroScan`;
+const siteName = 'AeroScan - Drónos keresés és mentés, épületfelmérés, fotózás és videózás';
+const fullTitle = title === 'Főoldal' ? siteName : title.includes('AeroScan') ? title : `${title} | AeroScan`;
 ---
 
 <meta charset="utf-8" />

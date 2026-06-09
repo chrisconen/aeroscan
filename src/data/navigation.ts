@@ -34,8 +34,5 @@ export const contactInfo = {
 } as const;
 
 export const socialLinks = [
-  { label: 'Facebook', href: 'https://facebook.com/aeroscan', icon: 'facebook' },
-  { label: 'YouTube', href: 'https://youtube.com/@aeroscan', icon: 'youtube' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/company/aeroscan', icon: 'linkedin' },
-  { label: 'Pinterest', href: 'https://pinterest.com/aeroscan', icon: 'pinterest' },
+  { label: 'Facebook', href: 'https://www.facebook.com/dron.kereso.mento.szolgalat/', icon: 'facebook' },
 ] as const;

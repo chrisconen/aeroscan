@@ -36,4 +36,5 @@ export const contactInfo = {
 
 export const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/dron.kereso.mento.szolgalat/', icon: 'facebook' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@buvartanfolyamok-kereses-buvar', icon: 'youtube' },
 ] as const;

@@ -19,6 +19,7 @@ export const mainNav = [
       { label: 'Elveszett kisállat keresés', href: '/elveszett-kisallat-kereses-dronnal' },
       { label: 'Épületfelmérés', href: '/epuletfelmeres' },
       { label: 'Keresés-mentés', href: '/kereses-mentes' },
+      { label: 'Keresés búvárral', href: '/kereses-buvarral' },
       { label: 'Járőrszolgálat', href: '/jaror-szolgalat' },
     ],
   },

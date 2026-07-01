@@ -6,10 +6,11 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
 <BaseLayout
   title="Keresés búvárral"
   description="Vízbe esett, elsüllyedt tárgyak keresése búvárral a Balatonon, Velencei-tavon és Tisza-tavon. Professzionális keresőbúvár szolgáltatás."
+  ogImage="/images/kereső-mentő-búvár-balaton.webp"
 >
   <!-- Hero -->
-  <section class="bg-primary py-16 lg:py-20">
-    <div class="max-w-7xl mx-auto px-4 text-white">
+  <section class="bg-primary py-16 lg:py-20 relative overflow-visible">
+    <div class="max-w-7xl mx-auto px-4 text-white relative z-10">
       <h1 class="font-heading text-4xl md:text-5xl font-bold leading-tight mb-4">
         Keresés búvárral
       </h1>
@@ -27,6 +28,12 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
         +36 30 569 6550
       </a>
     </div>
+    <img
+      src="/images/kereső-mentő-búvár-balaton.webp"
+      alt="Kereső-mentő búvár"
+      class="absolute bottom-0 right-0 h-[320px] w-auto object-contain translate-y-[30px] z-20 pointer-events-none"
+      style="filter: drop-shadow(0 12px 40px rgba(0,0,0,0.45));"
+    />
   </section>
 
   <!-- Video + leírás -->

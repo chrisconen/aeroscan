@@ -6,6 +6,7 @@ export default defineConfig({
   site: 'https://aeroscan.hu',
   output: 'static',
   trailingSlash: 'never',
+  devToolbar: { enabled: false },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

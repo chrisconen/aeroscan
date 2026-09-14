@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { contactInfo } from '@/data/navigation';
 ---
@@ -30,7 +31,7 @@ import { contactInfo } from '@/data/navigation';
           { icon: '👤', text: 'Személyes ügyintézés, egyetlen elérhető pilóta' },
         ].map((item) => (
           <div class="flex items-start gap-3 p-4 bg-surface rounded-xl">
-            <span class="text-2xl shrink-0" aria-hidden="true">{item.icon}</span>
+            <span class="text-2xl shrink-0" aria-hidden="true"><Icon name={item.icon} class="detail-icon" /></span>
             <span class="text-sm text-text">{item.text}</span>
           </div>
         ))}
@@ -40,7 +41,7 @@ import { contactInfo } from '@/data/navigation';
         <!-- Form -->
         <div class="lg:col-span-3">
           <h2 class="font-heading text-2xl font-bold text-primary mb-6">Kapcsolat űrlap</h2>
-          <form action="https://formspree.io/f/xlgagrrd" method="POST" class="space-y-6" id="contact-form">
+          <form action="https://formspree.io/f/xlgagrrd" method="POST" enctype="multipart/form-data" class="space-y-6" id="contact-form">
             <!-- Személyes adatok -->
             <fieldset>
               <legend class="font-heading font-bold text-primary mb-4">Az Ön adatai</legend>
@@ -146,6 +147,13 @@ import { contactInfo } from '@/data/navigation';
                 <textarea id="message" name="message" rows="5" required
                   class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors resize-y"
                   placeholder="Kérjük, írja le néhány mondatban a projektet!"></textarea>
+              </div>
+              <div class="mt-4">
+                <label for="attachments" class="block text-sm font-medium text-text mb-1">Képek, dokumentumok csatolása</label>
+                <input type="file" id="attachments" name="attachments" multiple
+                  accept="image/*,.pdf"
+                  class="w-full text-sm text-text-light file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-accent file:text-white file:font-medium hover:file:bg-accent-dark file:cursor-pointer cursor-pointer" />
+                <p class="text-xs text-text-light mt-1">Feltölthet képeket vagy PDF-et (max. 10 MB fájlonként).</p>
               </div>
             </fieldset>
 

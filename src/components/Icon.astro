@@ -1,0 +1,20 @@
+---
+interface Props { name?: string; class?: string }
+const { name = 'arrow', class: className } = Astro.props;
+const paths: Record<string, string> = {
+  arrow: 'M5 12h14m-5-5 5 5-5 5',
+  mountain: 'M2 20 9 4l4 8 3-7 6 15M9 15h4v-3h3v3h3v4h-3v3h-3v-3H9z',
+  building: 'M3 22V9h5m0 13V2h9v20m0-15h4v15M1 22h22M11 5h3m-3 4h3m-3 4h3m-3 4h3M5 12v2m0 3v2m14-8v2m0 3v2',
+  clock: 'M12 3a9 9 0 1 1-6.4 2.6M12 6v6l4 2M9 1h6M3 3l2 2',
+  people: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6m8-1a2.5 2.5 0 1 0 0-5M2 21v-3a7 7 0 0 1 14 0v3Zm15-8a5 5 0 0 1 5 5v3h-4',
+  map: 'm2 5 6-3 8 3 6-3v17l-6 3-8-3-6 3Zm6-3v17m8-14v17m-5-12 2 2 4-4',
+  shield: 'm12 2 9 4v6c0 5-5 9-9 11-4-2-9-6-9-11V6Zm-5 10 3 3 7-7',
+  check: 'M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0ZM7 12l3 3 7-7',
+  play: 'm9 5 10 7-10 7Z',
+  search: 'M16 10a6 6 0 1 1-12 0 6 6 0 0 1 12 0Zm-2 4 7 7',
+  camera: 'M3 6h5l2-3h4l2 3h5v15H3Zm14 7a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z',
+  document: 'M5 2h10l5 5v15H5Zm10 0v6h5M8 12h9M8 16h9',
+};
+const aliases: Record<string,string> = { '🏠':'building', '🏭':'building', '🏗️':'building', '🔧':'check', '🏛️':'building', '🌉':'map', '⚡':'clock', '🛡️':'shield', '🎯':'search', '💰':'check', '📋':'document', '🔬':'search', '💬':'people', '👤':'people', '🐕':'search', '🐈':'search', '🌾':'map', '🏡':'building', '🌲':'mountain', '👴':'people', '👶':'people', '🚶':'people' };
+---
+<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[aliases[name] || name] || paths.check}/></svg>

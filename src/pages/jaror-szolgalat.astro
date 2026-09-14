@@ -1,4 +1,6 @@
 ---
+import ServiceExperience from '@/components/experience/ServiceExperience.astro';
+import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
@@ -6,21 +8,10 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
 <BaseLayout
   title="Járőrszolgálat - Drónos járőrözés"
   description="Drónos járőrszolgálat ipari létesítmények, mezőgazdasági területek és magánbirtokok felügyeletére. Valós idejű monitoring, 4K zoom, GPS."
+  ogImage="/images/experiences/industrial-patrol.webp"
 >
   <!-- Hero -->
-  <section class="bg-primary py-16 lg:py-20">
-    <div class="max-w-7xl mx-auto px-4 text-white">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold leading-tight mb-4">
-        Drónos járőrszolgálat
-      </h1>
-      <p class="text-xl text-gray-200 mb-6 max-w-2xl">
-        Biztonság növelése, költséghatékony megfigyelés és azonnali reagálás — modern dróntechnológiával.
-      </p>
-      <a href="/kapcsolat" class="inline-block bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors">
-        Árajánlat kérés
-      </a>
-    </div>
-  </section>
+  <ServiceExperience kind="patrol" />
 
   <!-- A lényeg -->
   <section class="py-16 lg:py-24">
@@ -36,7 +27,7 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
           { icon: '📊', title: 'Adatgyűjtés', desc: 'Részletes dokumentáció és elemzés biztosítása.' },
         ].map((item) => (
           <div class="text-center p-6 bg-surface rounded-2xl">
-            <div class="text-3xl mb-3" aria-hidden="true">{item.icon}</div>
+            <div class="text-3xl mb-3" aria-hidden="true"><Icon name={item.icon} class="detail-icon" /></div>
             <h3 class="font-heading font-bold text-primary mb-2">{item.title}</h3>
             <p class="text-sm text-text-light">{item.desc}</p>
           </div>

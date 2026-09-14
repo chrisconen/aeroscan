@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
@@ -31,7 +32,7 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
     <img
       src="/images/kereső-mentő-búvár-balaton.webp"
       alt="Kereső-mentő búvár"
-      class="absolute bottom-0 right-0 h-[320px] w-auto object-contain translate-y-[30px] z-20 pointer-events-none"
+      class="absolute bottom-0 right-30 h-[320px] w-auto object-contain translate-y-[30px] z-20 pointer-events-none"
       style="filter: drop-shadow(0 12px 40px rgba(0,0,0,0.45));"
     />
   </section>
@@ -78,17 +79,17 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
         <div class="bg-white rounded-2xl p-8 text-center shadow-sm">
-          <div class="text-4xl mb-4">🏞️</div>
+          <div class="text-4xl mb-4"><Icon name="mountain" class="detail-icon" /></div>
           <h3 class="font-heading font-bold text-primary text-xl mb-2">Balaton</h3>
           <p class="text-sm text-text-light">Magyarország legnagyobb tava — változatos mélységű és látótávolságú vizek</p>
         </div>
         <div class="bg-white rounded-2xl p-8 text-center shadow-sm">
-          <div class="text-4xl mb-4">🌿</div>
+          <div class="text-4xl mb-4"><Icon name="map" class="detail-icon" /></div>
           <h3 class="font-heading font-bold text-primary text-xl mb-2">Velencei-tó</h3>
           <p class="text-sm text-text-light">Magyarország harmadik legnagyobb tava — sekély, nádasokkal tarkított vízfelület</p>
         </div>
         <div class="bg-white rounded-2xl p-8 text-center shadow-sm">
-          <div class="text-4xl mb-4">🏝️</div>
+          <div class="text-4xl mb-4"><Icon name="map" class="detail-icon" /></div>
           <h3 class="font-heading font-bold text-primary text-xl mb-2">Tisza-tó</h3>
           <p class="text-sm text-text-light">Egyedülálló ökológiai környezet — változatos víz alatti terepviszonyokkal</p>
         </div>

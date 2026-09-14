@@ -1,4 +1,6 @@
 ---
+import ServiceExperience from '@/components/experience/ServiceExperience.astro';
+import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
@@ -6,28 +8,10 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
 <BaseLayout
   title="Keresés & Mentés"
   description="Drónos keresés és mentés - eltűnt személy, elveszett háziállat felkutatása. Gyors bevetés, éjszakai keresés, élő közvetítés. Győr és 100km környéke."
+  ogImage="/images/experiences/lost-cat.webp"
 >
   <!-- Hero -->
-  <section class="bg-primary py-16 lg:py-20">
-    <div class="max-w-7xl mx-auto px-4 text-white">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold leading-tight mb-4">
-        Drónos keresés & mentés
-      </h1>
-      <p class="text-xl text-accent font-semibold mb-4">
-        Eltűnt személy? Elveszett háziállat? Ne pazarolj időt — indítsd be a drónt!
-      </p>
-      <p class="text-gray-300 mb-6 max-w-2xl">
-        Modern technológiánkkal, tapasztalt pilótáinkkal és valós idejű légi felderítővel
-        támogatjuk a gyors felderítést és a keresett személy vagy háziállat megtalálását.
-      </p>
-      <a href="tel:+36305696550" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-colors text-lg">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-        </svg>
-        +36 30 569 6550
-      </a>
-    </div>
-  </section>
+  <ServiceExperience kind="rescue" />
 
   <!-- Hogyan segít -->
   <section class="py-16 lg:py-24">
@@ -73,7 +57,7 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
           { icon: '🔍', title: '4K Zoom kamera', desc: 'Erős optikai zoommal messziről azonosíthatók személyek és állatok.' },
         ].map((item) => (
           <div class="bg-white rounded-2xl p-6 shadow-sm">
-            <div class="text-3xl mb-3" aria-hidden="true">{item.icon}</div>
+            <div class="text-3xl mb-3" aria-hidden="true"><Icon name={item.icon} class="detail-icon" /></div>
             <h3 class="font-heading font-bold text-primary mb-2">{item.title}</h3>
             <p class="text-sm text-text-light">{item.desc}</p>
           </div>

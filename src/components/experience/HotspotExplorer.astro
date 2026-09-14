@@ -1,0 +1,75 @@
+---
+import type { ExplorerScene } from '@/data/experiences';
+interface Props { id: string; scenes: ExplorerScene[]; map?: boolean }
+const { id, scenes, map = false } = Astro.props;
+---
+<div class:list={['explorer', { 'explorer-map': map }]} data-explorer>
+  {scenes.length > 1 && <div class="explorer-tabs" role="tablist" aria-label="Bemutatott helyzetek">{scenes.map((scene,i) => <button role="tab" id={`${id}-tab-${i}`} aria-controls={`${id}-scene-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-scene-tab={i}><span>0{i+1}</span>{scene.title}</button>)}</div>}
+  {scenes.map((scene,i) => <div class="explorer-panel" id={`${id}-scene-${i}`} role={scenes.length > 1 ? 'tabpanel' : 'group'} aria-labelledby={scenes.length > 1 ? `${id}-tab-${i}` : `${id}-title-${i}`} hidden={i > 0} data-scene-panel>
+    <div class="explorer-stage">
+      <div class="explorer-photo">
+      <img class="explorer-image" src={scene.image} alt={scene.alt} width={scene.width} height={scene.height} loading="lazy"/>
+      <div class="stage-topline"><span><i></i>{map ? 'KERESÉSI TERV' : 'RÉSZLETVIZSGÁLAT'}</span><span>INTERAKTÍV BEMUTATÓ</span></div>
+      {map && <svg class="search-route" viewBox="0 0 100 66.67" preserveAspectRatio="none" aria-hidden="true"><path d="M68 56 L46 38.7 L21 26 L59 17.3 L80 38.7"/><circle r=".7"><animateMotion dur="12s" repeatCount="indefinite" path="M68 56 L46 38.7 L21 26 L59 17.3 L80 38.7"/></circle></svg>}
+      {scene.points.map((point,j) => <div class:list={['hotspot', { 'hotspot-origin': map && j === 0 }]} style={`--x:${point.x}%;--y:${point.y}%;--delay:${j * .4}s`}>
+        <button class="hotspot-button" aria-label={`${j+1}. ${point.title}`} aria-expanded="false" aria-controls={`${id}-tip-${i}-${j}`} data-hotspot={j}><span>{map && j === 0 ? '⌖' : String(j+1).padStart(2,'0')}</span></button>
+        {map && j === 0 && <span class="origin-label">ITT SZALADT EL</span>}
+      </div>)}
+      <div class="stage-bottomline"><span>{map ? 'MŰHOLDKÉP-HATÁSÚ SZEMLÉLTETŐ TÉRKÉP' : 'AI-ILLUSZTRÁCIÓ · NEM VALÓS VIZSGÁLAT'}</span><button class="expand-image" data-open-image aria-label={`${scene.title} – kép nagyítása`}>Nagyítás <span>↗</span></button></div>
+      </div>
+      {scene.points.map((point,j) => <div class="hotspot-tooltip" id={`${id}-tip-${i}-${j}`} data-tooltip={j} hidden style={`--tip-x:${point.x}%;--tip-y:${point.y}%`} role="note"><span>{point.tag}</span><strong>{point.title}</strong><p>{point.text}</p><button data-close-tip aria-label="Magyarázat bezárása">×</button></div>)}
+    </div>
+    <div class="explorer-detail"><div><span class="micro-label">{map ? 'HOGYAN GONDOLKODUNK KERESÉS KÖZBEN?' : 'NÉZZEN A RÉSZLETEK MÖGÉ'}</span><h3 id={`${id}-title-${i}`}>{scene.title}</h3><p>{scene.subtitle}</p></div><div class="point-list" aria-label="A képen megjelölt részletek">{scene.points.map((point,j) => <button data-point-link={j}><span>{String(j+1).padStart(2,'0')}</span>{point.title}<span aria-hidden="true">↗</span></button>)}</div></div>
+    <dialog class="image-dialog" aria-label={`${scene.title} – nagyított illusztráció`}><div class="dialog-bar"><span>{scene.title} · AI-illusztráció</span><button data-close-image aria-label="Nagyított kép bezárása">Bezárás ×</button></div><div class="dialog-image-wrap"><img src={scene.image} alt={scene.alt} width={scene.width} height={scene.height} loading="lazy"/></div></dialog>
+  </div>)}
+  <p class="explorer-hint"><span aria-hidden="true">⌖</span> Kattintson a pulzáló pontokra vagy válasszon egy részletet a listából.</p>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-explorer]').forEach(explorer => {
+    const tabs = [...explorer.querySelectorAll<HTMLButtonElement>('[data-scene-tab]')];
+    const panels = [...explorer.querySelectorAll<HTMLElement>('[data-scene-panel]')];
+    function closeTips(panel: HTMLElement) {
+      panel.querySelectorAll<HTMLElement>('[data-tooltip]').forEach(tip => { tip.hidden = true; });
+      panel.querySelectorAll('[data-hotspot]').forEach(button => button.setAttribute('aria-expanded','false'));
+      panel.querySelectorAll('[data-point-link]').forEach(button => button.classList.remove('is-active'));
+    }
+    tabs.forEach((tab,index) => {
+      function activate() {
+        tabs.forEach((t,j) => { t.setAttribute('aria-selected', String(index === j)); t.tabIndex = index === j ? 0 : -1; });
+        panels.forEach((panel,j) => { panel.hidden = index !== j; closeTips(panel); });
+      }
+      tab.addEventListener('click',activate);
+      tab.addEventListener('keydown', event => {
+        let next = index;
+        if (event.key === 'ArrowRight') next = (index+1)%tabs.length;
+        else if (event.key === 'ArrowLeft') next = (index-1+tabs.length)%tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length-1;
+        else return;
+        event.preventDefault(); tabs[next].click(); tabs[next].focus();
+      });
+    });
+    panels.forEach(panel => {
+      let activeTrigger: HTMLElement | null = null;
+      function openTip(index: string, trigger: HTMLElement) {
+        const tip = panel.querySelector<HTMLElement>(`[data-tooltip="${index}"]`);
+        const wasOpen = tip && !tip.hidden;
+        closeTips(panel);
+        if (!tip || wasOpen) return;
+        tip.hidden = false; activeTrigger = trigger;
+        panel.querySelector(`[data-hotspot="${index}"]`)?.setAttribute('aria-expanded','true');
+        panel.querySelector(`[data-point-link="${index}"]`)?.classList.add('is-active');
+        if (trigger.hasAttribute('data-point-link')) tip.scrollIntoView({block:'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+      }
+      panel.querySelectorAll<HTMLElement>('[data-hotspot]').forEach(button => button.addEventListener('click', () => openTip(button.dataset.hotspot!,button)));
+      panel.querySelectorAll<HTMLElement>('[data-point-link]').forEach(button => button.addEventListener('click', () => openTip(button.dataset.pointLink!,button)));
+      panel.querySelectorAll('[data-close-tip]').forEach(button => button.addEventListener('click', () => { closeTips(panel); activeTrigger?.focus(); }));
+      panel.addEventListener('keydown',event => { if (event.key === 'Escape') { closeTips(panel); activeTrigger?.focus(); } });
+      const dialog = panel.querySelector<HTMLDialogElement>('dialog');
+      panel.querySelector('[data-open-image]')?.addEventListener('click', () => dialog?.showModal());
+      panel.querySelector('[data-close-image]')?.addEventListener('click', () => dialog?.close());
+      dialog?.addEventListener('click',event => { if (event.target === dialog) dialog.close(); });
+    });
+    document.addEventListener('click',event => { if (event.target instanceof Node && !explorer.contains(event.target)) panels.forEach(closeTips); });
+  });
+</script>

@@ -1,5 +1,6 @@
 ---
 import { services } from '@/data/services';
+import Icon from '@/components/Icon.astro';
 
 interface Props {
   city?: string;
@@ -29,12 +30,7 @@ const { city } = Astro.props;
         >
           {service.image.endsWith('.svg') ? (
             <div class="aspect-square overflow-hidden bg-gray-50 flex items-center justify-center">
-              <img
-                src={service.image}
-                alt={service.title}
-                class="w-[100px] h-[100px] object-contain"
-                loading="lazy"
-              />
+              <Icon name={service.icon} class="w-20 h-20 text-accent" />
             </div>
           ) : (
             <div class="aspect-[4/3] overflow-hidden">

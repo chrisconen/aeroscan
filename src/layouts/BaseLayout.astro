@@ -16,6 +16,7 @@ interface Props {
 }
 
 const { title, description, ogImage, type, city, coordinates } = Astro.props;
+const experiencePage = ['/elveszett-kisallat-kereses-dronnal', '/kereses-mentes', '/epuletfelmeres', '/jaror-szolgalat'].includes(Astro.url.pathname.replace(/\/$/, ''));
 ---
 
 <!doctype html>
@@ -25,9 +26,10 @@ const { title, description, ogImage, type, city, coordinates } = Astro.props;
     <SEOHead title={title} description={description} ogImage={ogImage} type={type} />
     <StructuredData city={city} coordinates={coordinates} />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class:list={['min-h-screen flex flex-col', Astro.url.pathname === '/' ? 'page-home' : 'page-inner', { 'page-experience': experiencePage }]}>
+    <a class="skip-link" href="#main-content">Ugrás a tartalomra</a>
     <Header />
-    <main class="flex-1">
+    <main class="flex-1" id="main-content">
       <slot />
     </main>
     <Footer />

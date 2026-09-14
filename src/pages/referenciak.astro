@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ContactCTA from '@/components/home/ContactCTA.astro';
+const projects = [
+  { image: '/images/drón_épületfelmérés_állapotfelmérés.webp', title: 'Homlokzat és tető felmérés', description: 'Épületek homlokzatának és tetőszerkezetének részletes légi vizsgálata.', href: '/epuletfelmeres' },
+  { image: '/images/drón-épületfelmérés_1.png', title: 'Ipari létesítmény felmérés', description: 'Légi dokumentáció a karbantartási és fejlesztési döntések támogatására.', href: '/epuletfelmeres' },
+  { image: '/images/drón-épületfelmérés_2.png', title: 'Építkezési terület felmérés', description: 'Építési területek áttekintése, állapotkövetése és dokumentálása.', href: '/epuletfelmeres' },
+  { image: '/images/drón_felmérés_állapotelemzés.avif', title: 'Műemlék épület felmérése', description: 'Részletes légi felvételek történelmi épületekről és nehezen elérhető részleteikről.', href: '/epuletfelmeres' },
+];
+---
+<BaseLayout title="Referenciák" description="Betekintés az AeroScan portfóliójába: épületfelmérés, ipari létesítmények és építkezési területek légi dokumentációja.">
+  <section class="bg-primary py-16 lg:py-20"><div class="max-w-7xl mx-auto px-4 text-white"><p class="text-sm uppercase tracking-widest text-accent-light mb-4">A részletek számítanak</p><h1 class="text-4xl md:text-5xl font-bold mb-5">Új nézőpont.<br/>Látható eredmények.</h1><p class="text-lg text-gray-200 max-w-2xl">Betekintés drónos felméréseink és légi dokumentációink világába.</p></div></section>
+  <section class="py-16 lg:py-24"><div class="max-w-7xl mx-auto px-4"><div class="reference-grid">{projects.map(project => <figure><a href={project.href}><img src={project.image} alt={project.title} loading="lazy" width="800" height="500"/><figcaption><h2>{project.title}</h2><p>{project.description}</p><span class="inline-block mt-5 text-sm text-accent">A szolgáltatás részletei →</span></figcaption></a></figure>)}</div></div></section>
+  <ContactCTA />
+</BaseLayout>

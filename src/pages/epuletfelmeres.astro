@@ -1,4 +1,6 @@
 ---
+import ServiceExperience from '@/components/experience/ServiceExperience.astro';
+import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
@@ -6,23 +8,10 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
 <BaseLayout
   title="Épületfelmérés - Drónos épületfelmérés"
   description="Professzionális drónos épületfelmérés Győrben és környékén. 4K felbontású felvételek, állapotfelmérés, zoom vizsgálat. Ingatlanfelmérés drónnal."
+  ogImage="/images/experiences/glass-seal.webp"
 >
   <!-- Hero -->
-  <section class="bg-primary py-16 lg:py-20">
-    <div class="max-w-7xl mx-auto px-4 text-white">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold leading-tight mb-4">
-        Épületek felmérése
-      </h1>
-      <p class="text-xl text-gray-200 mb-4">Precíz drónos épületfelmérések szakértőktől</p>
-      <p class="text-gray-300 mb-6 max-w-2xl">
-        Az AeroScan-nál a dróntechnológia legmodernebb vívmányait ötvöztük a mérnöki pontossággal,
-        hogy ügyfeleink számára megbízható, részletes és gyors felméréseket biztosítsunk.
-      </p>
-      <a href="/kapcsolat" class="inline-block bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors">
-        Árajánlat kérés
-      </a>
-    </div>
-  </section>
+  <ServiceExperience kind="inspection" />
 
   <!-- Szolgáltatási területek -->
   <section class="py-16 lg:py-24">
@@ -40,7 +29,7 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
           { icon: '🌉', title: 'Infrastruktúra', desc: 'Hidak, utak, napelempárkok állapotfelmérése.' },
         ].map((item) => (
           <div class="bg-surface rounded-2xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300">
-            <div class="text-3xl mb-3" aria-hidden="true">{item.icon}</div>
+            <div class="text-3xl mb-3" aria-hidden="true"><Icon name={item.icon} class="detail-icon" /></div>
             <h3 class="font-heading font-bold text-lg text-primary mb-2">{item.title}</h3>
             <p class="text-sm text-text-light">{item.desc}</p>
           </div>
@@ -98,33 +87,5 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
     </div>
   </section>
 
-  <!-- Portfólió -->
-  <section class="py-16 lg:py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-        Projektjeinkből
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { img: '/images/drón_épületfelmérés_állapotfelmérés.webp', title: 'Homlokzat és tető felmérés', desc: '5 emeletes társasház teljes körű homlokzati és tetőszerkezeti vizsgálata, ortofotó térképpel és 3D modellezéssel.' },
-          { img: '/images/drón-épületfelmérés_1.png', title: 'Ipari létesítmény felmérés', desc: 'Ipari létesítmény légi felmérése szerkezeti hibák azonosítására, rendszeres karbantartási és fejlesztési terv támogatására.' },
-          { img: '/images/drón-épületfelmérés_2.png', title: 'Építkezési terület felmérés', desc: 'Nagy volumenű lakópark építésének rendszeres drónos dokumentációja és helyszíni állapotjelentések készítése.' },
-          { img: '/images/drón-épületfelmérés_3.png', title: 'Napelempárk felmérése', desc: 'Több hektáros naperőmű területének felmérése és hibák lokalizálása hőkamerás technológiával.' },
-          { img: '/images/drón_felmérés_állapotelemzés.avif', title: 'Műemlék épület felmérése', desc: 'Történelmi jelentőségű épület részletes légi feltérképezése és 3D modellezése a megőrzési projekthez.' },
-        ].map((item) => (
-          <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group">
-            <div class="aspect-video overflow-hidden">
-              <img src={item.img} alt={item.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
-            <div class="p-5">
-              <h3 class="font-heading font-bold text-primary mb-2">{item.title}</h3>
-              <p class="text-sm text-text-light">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <ContactCTA />
+<ContactCTA />
 </BaseLayout>

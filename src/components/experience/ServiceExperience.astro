@@ -1,0 +1,59 @@
+---
+import HotspotExplorer from './HotspotExplorer.astro';
+import { searchScenes, inspectionScenes, patrolScenes } from '@/data/experiences';
+import '@/styles/experience.css';
+interface Props { kind: 'pets' | 'rescue' | 'inspection' | 'patrol' }
+const { kind } = Astro.props;
+const animal = kind === 'pets' || kind === 'rescue';
+const heroes = {
+  pets: { label: 'ELVESZETT KISÁLLAT KERESÉSE DRÓNNAL', title: ['Ő csak téged', 'keres.'], description: 'Valahol odakint vár rád. Mi egy másik nézőpontból segítünk a nyomára bukkanni — a réten, a folyóparton, a nehezen bejárható területeken.', image: 'lost-golden', alt: 'Elázott golden retriever kucorog egy esős réten, szomorúan a kamera felé néz.', action: 'Segítséget kérek', href: 'tel:+36305696550', secondary: 'Így keressük', anchor: '#keresesi-terkep', footer: 'EGY CSALÁDTAGOT KERESEL. MI IS ÍGY ÁLLUNK HOZZÁ.' },
+  rescue: { label: 'DRÓNOS KERESÉS ÉS MENTÉS', title: ['Valaki nagyon', 'várja haza.'], description: 'Egy megriadt cica. Egy elkóborolt kutya. Egy eltűnt ember. A levegőből olyan területekre is rálátunk, ahol a földi keresés nehéz.', image: 'lost-cat', alt: 'Esőben elázott, ijedt cica bújik meg a bokor alatt.', action: 'Kereséshez kérek segítséget', href: 'tel:+36305696550', secondary: 'A keresés nézőpontjai', anchor: '#allatok', footer: 'A LEVEGŐBŐL FELDERÍTÜNK. A FÖLDÖN EGYÜTT SEGÍTÜNK.' },
+  inspection: { label: 'DRÓNOS ÉPÜLET-ÁLLAPOTFELMÉRÉS', title: ['A részlet, ami', 'igazán számít.'], description: 'Kilógó tömítés a huszadik emeleten. Repedés a kéményen. Leváló vakolat. Közel visszük azt, ami a földről alig látszik.', image: 'glass-seal', alt: 'Irodaház magasan elhelyezkedő üvegfalának sérült tömítése közelről.', action: 'Felmérést kérek', href: '/kapcsolat', secondary: 'Megnézem a hibákat', anchor: '#reszletvizsgalat', footer: '4K VIDEÓ · KÖZELI RÉSZLETEK · VISSZAKERESHETŐ DOKUMENTÁCIÓ' },
+  patrol: { label: 'LÉGI JÁRŐRÖZÉS ÉS TERÜLETFELÜGYELET', title: ['Amikor a terület', 'elcsendesedik.'], description: 'A kapu, a hátsó kerítés, az erdőszéli rakodás. Rendszeres légi bejárásokkal segítünk észrevenni és dokumentálni a szokatlan eseményeket.', image: 'industrial-patrol', alt: 'Kivilágított gyártelep és rakodóudvar esti drónnézetben.', action: 'Járőrözést egyeztetek', href: '/kapcsolat', secondary: 'Megnézem a helyzeteket', anchor: '#jaror-helyzetek', footer: 'RENDSZERES BEJÁRÁS · ESEMÉNYRÖGZÍTÉS · HELYSZÍNI EGYEZTETÉS' },
+};
+const hero = heroes[kind];
+const animals = [
+  { image: 'lost-golden', label: '01 / ELKÓBOROLT KUTYA', title: 'Egy ismerős hangra vár.', text: 'Rétek, földutak és vízpartok átvizsgálásával segítjük a keresést. A megtalált állat megközelítését a gazdival egyeztetjük.', alt: 'Elázott golden retriever az esős mezőn.' },
+  { image: 'lost-cat', label: '02 / ELBÚJT CICA', title: 'Néha egészen közel bújik el.', text: 'Bokorszélek, udvarok és melléképületek környezete is lehet menedék. A drón mellett a csendes, türelmes földi keresésnek is fontos szerepe van.', alt: 'Vizes, megrémült cica egy bokor védelmében.' },
+  { image: 'horses', label: '03 / ELSZABADULT LOVAK', title: 'Nagy terület. Mozgó nyomok.', text: 'A nyílt mezőkön mozgó állatok helyzetének felderítése segítheti a gazdák munkáját. A repülést úgy tervezzük, hogy ne hajtsuk és ne riasszuk az állatokat.', alt: 'Három ló fut egy nagy folyóparti mezőn.' },
+];
+---
+<div class:list={['experience', `experience-${kind}`]}>
+  <section class="story-hero">
+    <img class="story-hero-image" src={`/images/experiences/${hero.image}.webp`} alt={hero.alt} width={kind === 'inspection' ? 1672 : 1536} height={kind === 'inspection' ? 941 : 1024} fetchpriority="high"/>
+    <div class="story-hero-shade"></div>
+    <div class="story-hero-copy"><p class="micro-label">{hero.label}</p><h1>{hero.title[0]}<br/><em>{hero.title[1]}</em></h1><p class="story-lead">{hero.description}</p><div class="story-actions"><a class="story-button" href={hero.href}>{hero.action}<span>↗</span></a><a class="story-text-link" href={hero.anchor}>{hero.secondary}<span>↓</span></a></div></div>
+    <div class="hero-corner" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="story-hero-bottom"><span>{hero.footer}</span><span>AI-ILLUSZTRÁCIÓ</span></div>
+  </section>
+
+  {kind === 'pets' && <section class="reunion-section"><img src="/images/experiences/reunion.webp" alt="A megtalált golden retrievert tárt karokkal várják boldog gazdái egy napsütötte réten." width="1536" height="1024" loading="lazy"/><div class="reunion-copy" data-reveal><span class="micro-label">EZÉRT INDULUNK EL.</span><h2>Hogy újra<br/><em>együtt lehessetek.</em></h2><p>Az a pillanat, amikor meglátod. Amikor ő is felismer. Amikor végre nem kell tovább keresned.</p><p class="quiet-copy">Minden keresés más. A drónos felderítés a földi keresést egészíti ki — a közös cél a biztonságos hazatérés.</p><a class="story-text-link" href="#keresesi-terkep">Nézd meg, hol keresünk <span>↓</span></a></div><span class="image-disclosure">Szemléltető történet · AI-illusztráció</span></section>}
+
+  {animal && <>
+    <section class="search-section experience-section" id="keresesi-terkep">
+      <div class="experience-heading" data-reveal><div><p class="micro-label">A KERESÉS NEM TALÁLGATÁS.</p><h2>Minden nyom<br/><em>egy új irány.</em></h2></div><p>Az utolsó észlelés helyétől indulunk. Nyisd meg a térkép pontjait, és nézd meg, mit vizsgálunk az egyes tereptípusokon.</p></div>
+      <HotspotExplorer id={`${kind}-map`} scenes={searchScenes} map />
+    </section>
+    <section class="animals-section experience-section" id="allatok"><div class="experience-heading" data-reveal><div><p class="micro-label">MINDEN ÁLLAT MÁSKÉPP REAGÁL.</p><h2>Más történet.<br/><em>Ugyanaz a törődés.</em></h2></div><p>Van, aki tovább szalad. Van, aki csendben elbújik. A keresés módját az állathoz és a terephez igazítjuk.</p></div><div class="animal-grid">{animals.map(item => <article class="animal-card"><img src={`/images/experiences/${item.image}.webp`} alt={item.alt} width="1536" height="1024" loading="lazy"/><div class="animal-card-copy"><p class="micro-label">{item.label}</p><h3>{item.title}</h3><details><summary>Hogyan segítünk?<span>+</span></summary><p>{item.text}</p></details></div></article>)}</div><p class="visual-note">A jelenetek szemléltető AI-illusztrációk, nem korábbi bevetések felvételei.</p></section>
+  </>}
+
+  {kind === 'rescue' && <section class="rescue-reunion"><img src="/images/experiences/reunion.webp" alt="Örömteli találkozás a megtalált kutyával a réten." width="1536" height="1024" loading="lazy"/><div data-reveal><p class="micro-label">EGYÜTT A HAZATÉRÉSÉRT</p><h2>Hogy a keresésből<br/><em>találkozás legyen.</em></h2><a class="story-button" href="tel:+36305696550">Beszéljünk a helyzetről <span>↗</span></a></div><span class="image-disclosure">AI-illusztráció</span></section>}
+
+  {kind === 'inspection' && <>
+    <section class="inspection-section experience-section" id="reszletvizsgalat"><div class="experience-heading" data-reveal><div><p class="micro-label">NÉGY HELYZET. EGY ÚJ NÉZŐPONT.</p><h2>Ne csak nézze.<br/><em>Vegye észre.</em></h2></div><p>Válasszon épülettípust, majd kattintson a jelölésekre. Megmutatjuk, mely részlet mire hívhatja fel a figyelmet egy drónos felmérésen.</p></div><HotspotExplorer id="inspection" scenes={inspectionScenes}/></section>
+    <section class="inspection-story experience-section"><div class="inspection-story-image"><img src="/images/experiences/chimney-damage.webp" alt="Gyárkémény sérülése a magasban, közeli szemléltető felvételen." width="1672" height="941" loading="lazy"/><span class="image-disclosure">AI-illusztráció</span></div><div class="inspection-story-copy" data-reveal><p class="micro-label">A MAGASSÁG NE TAKARJA EL A RÉSZLETET.</p><h2>Közelebb a hibához.<br/><em>Közelebb a döntéshez.</em></h2><p>A 4K videó és a közeli fotók az épület egészét és az egyes hibapontokat is megmutatják. A felvételeket helyhez és épületrészhez rendezve lehet igazán használhatóvá tenni.</p><ol class="evidence-steps"><li><span>01</span><div><h3>Áttekintés</h3><p>Az épület és környezete, több nézőpontból.</p></div></li><li><span>02</span><div><h3>Részletfelvétel</h3><p>A látható eltérések célzott dokumentálása.</p></div></li><li><span>03</span><div><h3>Értelmezhető átadás</h3><p>Visszakereshető képek a karbantartási egyeztetéshez.</p></div></li></ol><p class="quiet-copy">A vizuális felmérés a mérnöki és helyszíni vizsgálatot támogatja. A kép felbontása önmagában nem jelent mérési pontosságot.</p></div></section>
+  </>}
+
+  {kind === 'patrol' && <>
+    <section class="patrol-section experience-section" id="jaror-helyzetek"><div class="experience-heading" data-reveal><div><p class="micro-label">NAGYOBB TERÜLET. TÖBB ÖSSZEFÜGGÉS.</p><h2>Egy szokatlan mozgás.<br/><em>Egy fontos részlet.</em></h2></div><p>Telephelyi behatolás gyanúja, anyagmozgatás vagy erdőszéli rakodás: a légi kép segít észlelni a helyzetet és a teljes környezetet dokumentálni.</p></div><HotspotExplorer id="patrol" scenes={patrolScenes}/></section>
+    <section class="patrol-record experience-section"><div data-reveal><p class="micro-label">AZ ÉSZLELÉSTŐL A DOKUMENTÁCIÓIG</p><h2>Ne csak emléke<br/><em>legyen az eseménynek.</em></h2><p>A 4K videó segíthet a feltételezett lopás vagy illetéktelen behatolás körülményeinek tisztázásában. A helyszíni ellenőrzéshez a felvétel összefüggései is kellenek.</p><a class="story-button" href="/kapcsolat">Átbeszéljük a területét <span>↗</span></a></div><ol class="evidence-steps"><li><span>01</span><div><h3>Rendszeres légi járőr</h3><p>Előre egyeztetett útvonalak és időszakok. Kapuk, kerítések, udvarok és anyagtárolók bejárása.</p></div></li><li><span>02</span><div><h3>Esemény rögzítése</h3><p>A mozgás és környezete videón. Az eredeti felvétel és a hozzá tartozó idő- és helyadatok megőrzése.</p></div></li><li><span>03</span><div><h3>Jelzés és visszakeresés</h3><p>Egyeztetés a kijelölt kapcsolattartóval, a releváns képsorok átadása. A jogosultság ellenőrzése helyszíni feladat.</p></div></li></ol><p class="patrol-footnote">A rendszeres drónos bejárás a folyamatos telephelyi védelem része lehet; a repülések közötti időszakra külön őrzési megoldás szükséges.</p></section>
+  </>}
+</div>
+<script>
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-revealed'); observer.unobserve(entry.target); }
+    }), { threshold: .12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => { el.classList.add('will-reveal'); observer.observe(el); });
+  }
+</script>

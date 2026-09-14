@@ -1,27 +1,48 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeroSlider from '@/components/home/HeroSlider.astro';
-import IntroSection from '@/components/home/IntroSection.astro';
-import ServiceCards from '@/components/home/ServiceCards.astro';
-import DetailedServices from '@/components/home/DetailedServices.astro';
-import WhyDrone from '@/components/home/WhyDrone.astro';
-import TechSection from '@/components/home/TechSection.astro';
-import QualitySection from '@/components/home/QualitySection.astro';
-import TeamSection from '@/components/home/TeamSection.astro';
-import ContactCTA from '@/components/home/ContactCTA.astro';
+import Icon from '@/components/Icon.astro';
 ---
-
-<BaseLayout
-  title="Főoldal"
-  description="AeroScan - Professzionális drónos épületfelmérés, állapotelemzés, keresés-mentés és járőrszolgálat. Országos lefedettség."
->
-  <HeroSlider />
-  <IntroSection />
-  <ServiceCards />
-  <DetailedServices />
-  <WhyDrone />
-  <TechSection />
-  <QualitySection />
-  <TeamSection />
-  <ContactCTA />
+<BaseLayout title="Főoldal" description="AeroScan – Dróntechnológia a biztonságosabb holnapért. Keresés és mentés, épület-állapotfelmérés és professzionális drónmegoldások." ogImage="/images/redesign/landscape-plate.webp">
+  <div class="home-canvas">
+    <section class="home-hero plate" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Dróntechnológia<br/>a biztonságosabb holnapért</p>
+        <h1 id="hero-title">A levegőből<br/>többet látunk</h1>
+        <p class="hero-description">Keresés és mentés. Épület állapotfelmérés. Professzionális<br class="desktop-break"/> drónmegoldások, amikor a részletek számítanak.</p>
+        <div class="hero-actions"><a href="#szolgaltatasok" class="pill">Szolgáltatások <Icon /></a><a href="#rolunk" class="about-link"><span class="circle"><Icon name="play"/></span> Rólunk</a></div>
+      </div>
+      <div class="hero-target" aria-hidden="true">Keresünk<br/>Segítünk<br/>Megtaláljuk</div>
+      <div class="telemetry" aria-hidden="true">47.4979° N<br/>19.0402° E<br/>ALT 120 M<span></span></div>
+      <p class="hero-footnote">A technológia<br/>életeket menthet</p>
+      <p class="hero-signature">Emberekért.<br/><span>Biztonságért.</span><br/><span>Magasabbról.</span></p>
+    </section>
+    <section class="home-services plate" id="szolgaltatasok" aria-label="Kiemelt szolgáltatások">
+      <a href="/kereses-mentes" class="feature-service">
+        <Icon name="mountain" class="service-icon"/>
+        <div><h2><span>Drónos</span>Keresés &amp; mentés</h2><p>Gyorsabb felderítés.<br/>Nagyobb esély. Valós segítség.</p></div>
+        <span class="circle service-arrow"><Icon/></span><span class="service-note">Hőkamerás<br/>felderítés</span>
+      </a>
+      <a href="/epuletfelmeres" class="feature-service">
+        <Icon name="building" class="service-icon"/>
+        <div><h2><span>Drónos</span>Épület állapotfelmérés</h2><p>Precíz adatok.<br/>Biztonságos döntések.<br/>Hatékonyabb üzemeltetés.</p></div>
+        <span class="circle service-arrow"><Icon/></span><span class="scan-labels" aria-hidden="true">3D modell<br/>Hőtérkép<br/>Ortofotó<br/>Pontfelhő<br/><small>Részletes elemzés</small></span>
+      </a>
+    </section>
+    <section class="home-perspective plate" id="rolunk">
+      <div class="perspective-copy"><h2>Új perspektíva.<br/>Valódi eredmények.</h2><p>A dróntechnológia lehetőséget ad arra, hogy gyorsabban,<br class="desktop-break"/> biztonságosabban és pontosabban lássunk rá a világra.<br class="desktop-break"/> Az AeroScan.hu-nál ezt a lehetőséget a közösség,<br class="desktop-break"/> az infrastruktúra és a biztonság szolgálatába állítjuk.</p><a href="#kuldetesunk" class="pill pill-outline">Miért AeroScan? <Icon/></a></div>
+      <div class="radar" aria-hidden="true"><i></i><i></i><i></i></div><p class="perspective-caption">Szélesebb látókör.<br/>Biztonságosabb jövő.</p><p class="perspective-side" aria-hidden="true">Higher<br/>sight<br/>safer<br/>tomorrow</p>
+    </section>
+    <section class="home-stats plate" aria-label="Az AeroScan számokban">
+      <div><Icon name="clock"/><p><strong>24/7</strong><span>Bevetésre készen</span></p></div>
+      <div><Icon name="people"/><p><strong>100+</strong><span>Sikeres küldetés</span></p></div>
+      <div><Icon name="map"/><p><strong>Országos</strong><span>lefedettség</span></p></div>
+      <div><Icon name="shield"/><p><span>Professzionális<br/>eszközpark</span></p></div>
+      <div><Icon name="check"/><p><span>Hiteles adatok<br/>és szakértői elemzés</span></p></div>
+    </section>
+    <section class="home-mission plate" id="kuldetesunk">
+      <div class="mission-copy"><p class="section-label">Küldetésünk</p><h2>Technológiával<br/>az emberekért</h2><p>Hiszünk abban, hogy a dróntechnológia nem csupán eszköz,<br class="desktop-break"/> hanem felelősség is. Küldetésünk, hogy tudásunkkal,<br class="desktop-break"/> tapasztalatunkkal és modern megoldásainkkal biztonságosabbá<br class="desktop-break"/> tegyük az emberek mindennapjait – a levegőből, a földön.</p><div class="mission-signature">AeroScan.hu<span>csapat</span></div></div>
+      <blockquote><span>“</span>Mert mindig<br/>van magasabb<br/>nézőpont.</blockquote>
+    </section>
+    <section class="home-contact plate"><div><h2>Készen áll egy új nézőpontra?</h2><p>Beszéljük meg, hogyan segíthetünk Önnek!</p></div><a href="/kapcsolat" class="pill">Kapcsolatfelvétel <Icon/></a></section>
+  </div>
 </BaseLayout>

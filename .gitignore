@@ -7,3 +7,6 @@ VIDEÓK/
 *.log
 .DS_Store
 Thumbs.db
+artifacts/
+scripts/integrate-experiences.py
+scripts/prepare-experience-assets.py

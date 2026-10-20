@@ -17,6 +17,9 @@ export default defineConfig({
   build: {
     // ponytail: one less blocking request beats cross-page CSS caching on a landing-page site.
     inlineStylesheets: 'always',
+    // Emit `kapcsolat.html`, not `kapcsolat/index.html`: with the directory form
+    // Cloudflare Pages 308s every slash-less link, which Lighthouse prices at ~850 ms.
+    format: 'file',
   },
   vite: {
     plugins: [tailwindcss()],

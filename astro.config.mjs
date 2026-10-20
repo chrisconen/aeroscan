@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
@@ -8,9 +8,39 @@ export default defineConfig({
   trailingSlash: 'never',
   devToolbar: { enabled: false },
   integrations: [sitemap()],
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: { webp: { quality: 72, effort: 5 }, jpeg: { quality: 78, mozjpeg: true } },
+    },
+  },
+  build: {
+    // ponytail: one less blocking request beats cross-page CSS caching on a landing-page site.
+    inlineStylesheets: 'always',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Roboto',
+      cssVariable: '--font-roboto',
+      weights: ['400 900'],
+      styles: ['normal'],
+      subsets: ['latin', 'latin-ext'],
+      fallbacks: ['system-ui', 'sans-serif'],
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Manrope',
+      cssVariable: '--font-manrope',
+      weights: ['400 800'],
+      styles: ['normal'],
+      subsets: ['latin', 'latin-ext'],
+      fallbacks: ['system-ui', 'sans-serif'],
+    },
+  ],
   i18n: {
     defaultLocale: 'hu',
     locales: ['hu'],

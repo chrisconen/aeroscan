@@ -1,0 +1,49 @@
+---
+// A <source> in the markup costs ~1s of first paint even with preload="none",
+// so the player is only created once someone asks for it.
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  poster: ImageMetadata;
+  label: string;
+  sizes?: string;
+  class?: string;
+}
+
+const { src, poster, label, sizes = '(max-width: 900px) 100vw, 55vw', class: className } = Astro.props;
+---
+
+<div class:list={['lazy-video', className]} data-lazy-video data-src={src} data-label={label}>
+  <Image src={poster} alt="" widths={[420, 840]} sizes={sizes} loading="lazy" />
+  <button type="button"><span aria-hidden="true">▶</span> {label}</button>
+</div>
+
+<style is:global>
+  .lazy-video { position: relative; display: grid; }
+  .lazy-video > img,
+  .lazy-video > video { display: block; width: 100%; border-radius: inherit; }
+  .lazy-video > button {
+    position: absolute; inset: 0; display: flex; gap: 12px;
+    align-items: center; justify-content: center;
+    border: 0; border-radius: inherit; background: #0d242966;
+    color: #fff; font: inherit; font-size: 13px; font-weight: 700;
+  }
+  .lazy-video > button:hover { background: #0d2429aa; }
+  .lazy-video > button span { font-size: 26px; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-lazy-video]').forEach(box => {
+    box.querySelector('button')?.addEventListener('click', () => {
+      const video = document.createElement('video');
+      video.src = box.dataset.src!;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.setAttribute('aria-label', box.dataset.label ?? '');
+      box.replaceChildren(video);
+      video.focus();
+    });
+  });
+</script>

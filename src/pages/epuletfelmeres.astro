@@ -2,13 +2,14 @@
 import ServiceExperience from '@/components/experience/ServiceExperience.astro';
 import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ogImg from '@/assets/experiences/glass-seal.webp';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
 
 <BaseLayout
   title="Épületfelmérés - Drónos épületfelmérés"
   description="Professzionális drónos épületfelmérés Győrben és környékén. 4K felbontású felvételek, állapotfelmérés, zoom vizsgálat. Ingatlanfelmérés drónnal."
-  ogImage="/images/experiences/glass-seal.webp"
+  ogImage={ogImg}
 >
   <!-- Hero -->
   <ServiceExperience kind="inspection" />

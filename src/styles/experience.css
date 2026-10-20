@@ -41,7 +41,7 @@
 .explorer { border-top: 1px solid #c0e3df33; }
 .explorer-tabs { display: flex; overflow-x: auto; scrollbar-width: thin; border-bottom: 1px solid #c0e3df33; }
 .explorer-tabs button { position: relative; flex: 1; min-width: 0; color: #b1c0c5; text-align: left; padding: 22px 16px; font-size: 14px; transition: background .2s,color .2s; border-right: 1px solid #c0e3df1a; }
-.explorer-tabs button span { display: block; font-size: 10px; margin-bottom: 7px; color: #72979a; letter-spacing: .15em; }
+.explorer-tabs button span { display: block; font-size: 10px; margin-bottom: 7px; color: #7fa5a8; letter-spacing: .15em; }
 .explorer-tabs button[aria-selected=true] { background: #173138; color: white; box-shadow: inset 0 -2px #b8dfde; }
 .explorer-tabs button:hover { background: #17313880; }
 .explorer-stage { position: relative; }
@@ -107,7 +107,7 @@
 .inspection-story-copy > p { font-size: 16px; line-height: 1.75; }
 .evidence-steps { padding: 0; margin: 32px 0; list-style: none; }
 .evidence-steps li { display: flex; gap: 25px; padding: 22px 0; border-top: 1px solid #70988a4d; }
-.evidence-steps li > span { font-size: 12px; color: #739488; padding-top: 3px; }.evidence-steps h3 { font-size: 18px; font-weight: 500; margin-bottom: 7px; }.evidence-steps p { font-size: 14px; line-height: 1.65; }
+.evidence-steps li > span { font-size: 12px; color: #80a295; padding-top: 3px; }.evidence-steps h3 { font-size: 18px; font-weight: 500; margin-bottom: 7px; }.evidence-steps p { font-size: 14px; line-height: 1.65; }
 .inspection-story-copy .quiet-copy { font-size: 12px; color: #526e61; }
 .patrol-record { display: grid; grid-template-columns: 1.1fr 1fr; gap: 7vw; background: #132c31; }.patrol-record h2 { font-size: clamp(36px,4vw,60px); line-height: 1.1; margin: 20px 0 26px !important; }.patrol-record > div > p:not(.micro-label) { color: #b8cdca; font-size: 17px; line-height: 1.75; max-width: 460px; }.patrol-record .story-button { margin-top: 30px; }.patrol-record .evidence-steps { margin: 0; }.patrol-record .evidence-steps p { color: #aac3c1; }.patrol-footnote { grid-column: 1/-1; padding-top: 20px; border-top: 1px solid #688e8955; font-size: 12px; color: #b0c6c4; line-height: 1.6; }
 .will-reveal { opacity: 0; transform: translateY(25px); transition: opacity .7s ease,transform .7s ease; }.will-reveal.is-revealed { opacity: 1; transform: none; }
@@ -136,3 +136,14 @@
 }
 @media (prefers-reduced-motion: reduce) { .hotspot-button::before,.hotspot-button::after { animation: none; display: none; }.search-route circle { display: none; }.will-reveal { opacity: 1; transform: none; }.animal-card:hover > img { transform: none; } }
 @media (max-width: 380px) { .page-experience .header-inner { gap: 12px; padding: 14px 18px; }.page-experience .brand { width: 102px; }.page-experience .brand-name { font-size: 16px; }.page-experience .brand-tagline { font-size: 5px; letter-spacing: 1px; }.page-experience .header-quote { font-size: 9px; padding: 10px 8px; gap: 8px; }.story-hero h1 { font-size: 43px; }.story-hero-copy { padding-inline: 20px; }.story-hero-bottom { left: 20px; right: 20px; }.story-hero-bottom > span:first-child { max-width: 175px; } }
+
+/* Same reason as upgrade.css: keep the first paint out of the whole page's layout. */
+.experience-section,
+.animals-section,
+.reunion-section,
+.rescue-reunion,
+.inspection-story,
+.search-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}

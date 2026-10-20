@@ -2,7 +2,7 @@
 title: "Drónos keresés, felderítés és mentés"
 description: "Gyors, pontos és biztonságos megoldások valós idejű légi támogatással. Drónos keresés-mentés katasztrófavédelemben, rendvédelemben és humanitárius feladatokban."
 pubDate: 2025-07-01
-heroImage: "/images/dronos_kereses_mentes_kutya_cica.png"
+heroImage: "../../assets/kereses-mentes-kutya-cica.png"
 category: "Katasztrófavédelem és környezetvédelem"
 categories: ["Katasztrófavédelem és környezetvédelem"]
 tags: ["keresés-mentés", "drón", "felderítés", "katasztrófavédelem"]

@@ -2,7 +2,7 @@
 interface Props { compact?: boolean }
 const { compact = false } = Astro.props;
 ---
-<a href="/" class:list={['brand', { 'brand-compact': compact }]} aria-label="AeroScan – főoldal">
+<a href="/" class:list={['brand', { 'brand-compact': compact }]}>
   <svg viewBox="0 0 68 47" fill="none" aria-hidden="true"><path d="M5 43 34 6l29 37" stroke="currentColor" stroke-width="4"/><path d="m20 38 14-12 15 12-15-6Z" fill="#8cc9db"/></svg>
   <span class="brand-name">AEROSCAN</span>
   <span class="brand-tagline">FÖLDRŐL A BIZTONSÁGÉRT</span>

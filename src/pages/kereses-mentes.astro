@@ -2,13 +2,14 @@
 import ServiceExperience from '@/components/experience/ServiceExperience.astro';
 import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ogImg from '@/assets/experiences/lost-cat.webp';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
 
 <BaseLayout
   title="Keresés & Mentés"
   description="Drónos keresés és mentés - eltűnt személy, elveszett háziállat felkutatása. Gyors bevetés, éjszakai keresés, élő közvetítés. Győr és 100km környéke."
-  ogImage="/images/experiences/lost-cat.webp"
+  ogImage={ogImg}
 >
   <!-- Hero -->
   <ServiceExperience kind="rescue" />

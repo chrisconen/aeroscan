@@ -2,7 +2,7 @@
 title: "Ipari alkalmazások: Hol és hogyan hasznosíthatók a drónos felmérések?"
 description: "Építőipar, energetika, mezőgazdaság, bányászat és infrastruktúra - fedezze fel a drónos felmérések ipari alkalmazási területeit."
 pubDate: 2025-04-27
-heroImage: "/images/drón-épületfelmérés_1.png"
+heroImage: "../../assets/epuletfelmeres-1.png"
 category: "Ipari drón felhasználás"
 categories: ["Drónos felmérések", "Innovatív drón technológia", "Ipari drón felhasználás", "Költséghatékonyság és hatékonyság"]
 tags: ["ipari", "építőipar", "energetika", "mezőgazdaság", "bányászat", "infrastruktúra"]

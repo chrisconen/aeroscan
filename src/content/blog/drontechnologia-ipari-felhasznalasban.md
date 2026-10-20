@@ -2,7 +2,7 @@
 title: "Biztonságos, költséghatékony megoldás nagy területek felmérésére: dróntechnológia az ipari felhasználásban"
 description: "Nagy kiterjedésű területek pontos felmérése drónnal. Biztonságos, gyors és költséghatékony alternatíva ipari, mezőgazdasági és bányászati környezetben."
 pubDate: 2025-04-27
-heroImage: "/images/drónos_felmérések_elemzések.avif"
+heroImage: "../../assets/dronos-felmeresek-elemzesek.avif"
 category: "Ipari drón felhasználás"
 categories: ["Drónos felmérések", "Infrastruktúra és építészet", "Ipari drón felhasználás", "Költséghatékonyság és hatékonyság"]
 tags: ["ipari", "nagy terület", "biztonság", "költséghatékonyság", "DTM"]

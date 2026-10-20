@@ -2,7 +2,7 @@
 title: "Miért éri meg drónnal végezni a légi felméréseket?"
 description: "Gyors adatgyűjtés, költséghatékonyság, pontosság, biztonság és környezetbarát megoldás - a drónos légi felmérések 6 legfontosabb előnye."
 pubDate: 2025-04-27
-heroImage: "/images/drónos_felmérés_állapotelemzés.avif"
+heroImage: "../../assets/dronos-felmeres-allapotelemzes.avif"
 category: "Drónos felmérések"
 categories: ["Drónos felmérések", "Költséghatékonyság és hatékonyság"]
 tags: ["légi felmérés", "drón előnyök", "költséghatékonyság", "biztonság"]

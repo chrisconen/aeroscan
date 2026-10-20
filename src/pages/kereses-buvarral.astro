@@ -1,13 +1,18 @@
 ---
 import Icon from '@/components/Icon.astro';
+import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ogImg from '@/assets/kereso-mento-buvar-balaton.webp';
+import diver from '@/assets/kereso-mento-buvar-balaton.webp';
+import diverPoster from '@/assets/upgrade/diver-poster.webp';
+import LazyVideo from '@/components/LazyVideo.astro';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
 
 <BaseLayout
   title="Keresés búvárral"
   description="Vízbe esett, elsüllyedt tárgyak keresése búvárral a Balatonon, Velencei-tavon és Tisza-tavon. Professzionális keresőbúvár szolgáltatás."
-  ogImage="/images/kereső-mentő-búvár-balaton.webp"
+  ogImage={ogImg}
 >
   <!-- Hero -->
   <section class="bg-primary py-16 lg:py-20 relative overflow-visible">
@@ -29,9 +34,11 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
         +36 30 569 6550
       </a>
     </div>
-    <img
-      src="/images/kereső-mentő-búvár-balaton.webp"
+    <Image
+      src={diver}
       alt="Kereső-mentő búvár"
+      widths={[320, 640]}
+      sizes="320px"
       class="absolute bottom-0 right-30 h-[320px] w-auto object-contain translate-y-[30px] z-20 pointer-events-none"
       style="filter: drop-shadow(0 12px 40px rgba(0,0,0,0.45));"
     />
@@ -42,7 +49,7 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <video src="/videok/Balaton-buvar-kereses.mp4" controls playsinline preload="metadata" style="width:100%;border-radius:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.15);"></video>
+          <LazyVideo src="/videok/Balaton-buvar-kereses.mp4" poster={diverPoster} label="Búváros keresés bemutatóvideó" sizes="(max-width: 1024px) 100vw, 50vw" class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)]"/>
         </div>
         <div>
           <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">

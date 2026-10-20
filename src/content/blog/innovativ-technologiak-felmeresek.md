@@ -2,7 +2,7 @@
 title: "Innovatív technológiák, amelyek új szintre emelik a felmérések minőségét"
 description: "LiDAR, multispektrális érzékelők, RTK rendszerek és mesterséges intelligencia - a legújabb dróntechnológiák a felmérések szolgálatában."
 pubDate: 2025-04-27
-heroImage: "/images/drónos_felmérések_elemzések.avif"
+heroImage: "../../assets/dronos-felmeresek-elemzesek.avif"
 category: "Innovatív drón technológia"
 categories: ["Drónos felmérések", "Földrajzi információs rendszerek (GIS)", "Innovatív drón technológia"]
 tags: ["LiDAR", "RTK", "AI", "innováció", "3D modellezés"]

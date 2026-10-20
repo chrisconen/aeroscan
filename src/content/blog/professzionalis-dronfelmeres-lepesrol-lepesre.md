@@ -2,7 +2,7 @@
 title: "Hogyan zajlik egy professzionális drónfelmérés lépésről lépésre?"
 description: "A drónfelmérés teljes folyamata: igényfelmérés, helyszínelemzés, repülés, adatfeldolgozás és eredmények átadása. Így dolgozunk az AeroScan-nél."
 pubDate: 2025-04-27
-heroImage: "/images/drón_épületfelmérés_állapotfelmérés.webp"
+heroImage: "../../assets/epuletfelmeres-allapotfelmeres.webp"
 category: "Drónos felmérések"
 categories: ["Drónos felmérések", "Innovatív drón technológia", "Ipari drón felhasználás", "Projektfejlesztés és tervezés"]
 tags: ["folyamat", "professzionális", "drónfelmérés", "lépések"]

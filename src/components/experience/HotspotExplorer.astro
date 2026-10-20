@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import type { ExplorerScene } from '@/data/experiences';
 interface Props { id: string; scenes: ExplorerScene[]; map?: boolean }
 const { id, scenes, map = false } = Astro.props;
@@ -8,11 +9,11 @@ const { id, scenes, map = false } = Astro.props;
   {scenes.map((scene,i) => <div class="explorer-panel" id={`${id}-scene-${i}`} role={scenes.length > 1 ? 'tabpanel' : 'group'} aria-labelledby={scenes.length > 1 ? `${id}-tab-${i}` : `${id}-title-${i}`} hidden={i > 0} data-scene-panel>
     <div class="explorer-stage">
       <div class="explorer-photo">
-      <img class="explorer-image" src={scene.image} alt={scene.alt} width={scene.width} height={scene.height} loading="lazy"/>
+      <Image class="explorer-image" src={scene.image} alt={scene.alt} widths={[480, 960, 1400]} sizes="(max-width: 900px) 100vw, 60vw" loading="lazy"/>
       <div class="stage-topline"><span><i></i>{map ? 'KERESÉSI TERV' : 'RÉSZLETVIZSGÁLAT'}</span><span>INTERAKTÍV BEMUTATÓ</span></div>
       {map && <svg class="search-route" viewBox="0 0 100 66.67" preserveAspectRatio="none" aria-hidden="true"><path d="M68 56 L46 38.7 L21 26 L59 17.3 L80 38.7"/><circle r=".7"><animateMotion dur="12s" repeatCount="indefinite" path="M68 56 L46 38.7 L21 26 L59 17.3 L80 38.7"/></circle></svg>}
       {scene.points.map((point,j) => <div class:list={['hotspot', { 'hotspot-origin': map && j === 0 }]} style={`--x:${point.x}%;--y:${point.y}%;--delay:${j * .4}s`}>
-        <button class="hotspot-button" aria-label={`${j+1}. ${point.title}`} aria-expanded="false" aria-controls={`${id}-tip-${i}-${j}`} data-hotspot={j}><span>{map && j === 0 ? '⌖' : String(j+1).padStart(2,'0')}</span></button>
+        <button class="hotspot-button" aria-label={map && j === 0 ? point.title : `${String(j+1).padStart(2,'0')}. ${point.title}`} aria-expanded="false" aria-controls={`${id}-tip-${i}-${j}`} data-hotspot={j}>{map && j === 0 ? <span aria-hidden="true">⌖</span> : <span>{String(j+1).padStart(2,'0')}</span>}</button>
         {map && j === 0 && <span class="origin-label">ITT SZALADT EL</span>}
       </div>)}
       <div class="stage-bottomline"><span>{map ? 'MŰHOLDKÉP-HATÁSÚ SZEMLÉLTETŐ TÉRKÉP' : 'AI-ILLUSZTRÁCIÓ · NEM VALÓS VIZSGÁLAT'}</span><button class="expand-image" data-open-image aria-label={`${scene.title} – kép nagyítása`}>Nagyítás <span>↗</span></button></div>
@@ -20,7 +21,7 @@ const { id, scenes, map = false } = Astro.props;
       {scene.points.map((point,j) => <div class="hotspot-tooltip" id={`${id}-tip-${i}-${j}`} data-tooltip={j} hidden style={`--tip-x:${point.x}%;--tip-y:${point.y}%`} role="note"><span>{point.tag}</span><strong>{point.title}</strong><p>{point.text}</p><button data-close-tip aria-label="Magyarázat bezárása">×</button></div>)}
     </div>
     <div class="explorer-detail"><div><span class="micro-label">{map ? 'HOGYAN GONDOLKODUNK KERESÉS KÖZBEN?' : 'NÉZZEN A RÉSZLETEK MÖGÉ'}</span><h3 id={`${id}-title-${i}`}>{scene.title}</h3><p>{scene.subtitle}</p></div><div class="point-list" aria-label="A képen megjelölt részletek">{scene.points.map((point,j) => <button data-point-link={j}><span>{String(j+1).padStart(2,'0')}</span>{point.title}<span aria-hidden="true">↗</span></button>)}</div></div>
-    <dialog class="image-dialog" aria-label={`${scene.title} – nagyított illusztráció`}><div class="dialog-bar"><span>{scene.title} · AI-illusztráció</span><button data-close-image aria-label="Nagyított kép bezárása">Bezárás ×</button></div><div class="dialog-image-wrap"><img src={scene.image} alt={scene.alt} width={scene.width} height={scene.height} loading="lazy"/></div></dialog>
+    <dialog class="image-dialog" aria-label={`${scene.title} – nagyított illusztráció`}><div class="dialog-bar"><span>{scene.title} · AI-illusztráció</span><button data-close-image aria-label="Nagyított kép bezárása">Bezárás ×</button></div><div class="dialog-image-wrap"><Image src={scene.image} alt={scene.alt} widths={[480, 960, 1400]} sizes="100vw" loading="lazy"/></div></dialog>
   </div>)}
   <p class="explorer-hint"><span aria-hidden="true">⌖</span> Kattintson a pulzáló pontokra vagy válasszon egy részletet a listából.</p>
 </div>

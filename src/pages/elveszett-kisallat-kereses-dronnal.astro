@@ -1,6 +1,9 @@
 ---
 import ServiceExperience from '@/components/experience/ServiceExperience.astro';
+import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ogImg from '@/assets/experiences/lost-golden.webp';
+import pilot from '@/assets/kereso-mento-dron-pilota.webp';
 import { contactInfo } from '@/data/navigation';
 
 const phoneRaw = contactInfo.phone.replace(/\s/g, '');
@@ -62,7 +65,7 @@ const faqItems = [
 <BaseLayout
   title="Elveszett kutya és macska keresése drónnal – országos | AeroScan"
   description="Elveszett a kutyád vagy macskád? 4K zoomkamerás drónnal keressük meg, a levegőből — gyorsan, országosan. Hívj: +36 30 569 6550."
-  ogImage="/images/experiences/lost-golden.webp"
+  ogImage={ogImg}
 >
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
@@ -262,9 +265,11 @@ const faqItems = [
       </h2>
       <div class="flex flex-col sm:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-sm">
         <div class="w-40 h-40 shrink-0 rounded-full overflow-hidden bg-gray-200 ring-4 ring-white shadow-lg">
-          <img
-            src="/images/kereso-mento-dron-pilota.webp"
+          <Image
+            src={pilot}
             alt="Chris Conen drónpilóta"
+            widths={[160, 320]}
+            sizes="160px"
             class="w-full h-full object-cover"
             loading="lazy"
           />

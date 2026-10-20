@@ -2,7 +2,7 @@
 title: "Precíz adatok rövid határidővel: hogyan segítheti projektjét egy drónos felmérés?"
 description: "Rekordidő alatt pontos, megbízható adatok drónos technológiával. Centiméteres pontosságú ortofotók, 3D modellek és hőtérképek."
 pubDate: 2025-04-27
-heroImage: "/images/drón_felmérés_állapotelemzés.avif"
+heroImage: "../../assets/felmeres-allapotelemzes.avif"
 category: "Drónos felmérések"
 categories: ["Drónos felmérések", "Földrajzi információs rendszerek (GIS)", "Ipari drón felhasználás", "Katasztrófavédelem és környezetvédelem", "Mezőgazdasági felmérések"]
 tags: ["precizitás", "határidő", "ortofotó", "3D modell", "GIS"]

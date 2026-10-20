@@ -4,19 +4,25 @@ import StructuredData from '@/components/seo/StructuredData.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import CookieBanner from '@/components/layout/CookieBanner.astro';
+import { getImage } from 'astro:assets';
+import plate from '@/assets/landscape-plate.webp';
 import '@/styles/global.css';
 import '@/styles/upgrade.css';
 
 interface Props {
   title: string;
   description: string;
-  ogImage?: string;
+  ogImage?: ImageMetadata | string;
   type?: 'website' | 'article';
   city?: string;
   coordinates?: { lat: number; lng: number };
 }
 
 const { title, description, ogImage, type, city, coordinates } = Astro.props;
+const [plateSmall, plateLarge] = await Promise.all([
+  getImage({ src: plate, width: 760, quality: 62 }),
+  getImage({ src: plate, width: 1400, quality: 62 }),
+]);
 const experiencePage = ['/elveszett-kisallat-kereses-dronnal', '/kereses-mentes', '/epuletfelmeres', '/jaror-szolgalat'].includes(Astro.url.pathname.replace(/\/$/, ''));
 ---
 
@@ -26,6 +32,7 @@ const experiencePage = ['/elveszett-kisallat-kereses-dronnal', '/kereses-mentes'
     <meta name="google-site-verification" content="D_jbvAOrnaVOAhKsflijYXFrRnfWYHI_3FL5rDiKGWw" />
     <SEOHead title={title} description={description} ogImage={ogImage} type={type} />
     <StructuredData city={city} coordinates={coordinates} />
+    <style set:html={`:root{--plate:url(${plateSmall.src})}@media(min-width:761px){:root{--plate:url(${plateLarge.src})}}`}></style>
   </head>
   <body class:list={['min-h-screen flex flex-col', Astro.url.pathname === '/' ? 'page-home' : 'page-inner', { 'page-experience': experiencePage }]}>
     <a class="skip-link" href="#main-content">Ugrás a tartalomra</a>

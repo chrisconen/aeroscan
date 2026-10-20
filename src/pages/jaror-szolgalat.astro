@@ -2,13 +2,14 @@
 import ServiceExperience from '@/components/experience/ServiceExperience.astro';
 import Icon from '@/components/Icon.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ogImg from '@/assets/experiences/industrial-patrol.webp';
 import ContactCTA from '@/components/home/ContactCTA.astro';
 ---
 
 <BaseLayout
   title="Járőrszolgálat - Drónos járőrözés"
   description="Drónos járőrszolgálat ipari létesítmények, mezőgazdasági területek és magánbirtokok felügyeletére. Valós idejű monitoring, 4K zoom, GPS."
-  ogImage="/images/experiences/industrial-patrol.webp"
+  ogImage={ogImg}
 >
   <!-- Hero -->
   <ServiceExperience kind="patrol" />
@@ -98,7 +99,7 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
         <!-- Alap -->
         <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
           <h3 class="font-heading font-bold text-xl mb-2">Alap csomag</h3>
-          <p class="text-accent text-sm font-medium mb-4">Vagyonvédelem</p>
+          <p class="text-accent-light text-sm font-medium mb-4">Vagyonvédelem</p>
           <div class="mb-6">
             <span class="font-heading text-3xl font-bold">150 000 Ft</span>
             <span class="text-gray-400">/hó-tól</span>
@@ -132,10 +133,10 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
             NÉPSZERŰ
           </div>
           <h3 class="font-heading font-bold text-xl mb-2">Prémium csomag</h3>
-          <p class="text-white/80 text-sm font-medium mb-4">Ipari ellenőrzés</p>
+          <p class="text-white text-sm font-medium mb-4">Ipari ellenőrzés</p>
           <div class="mb-6">
             <span class="font-heading text-3xl font-bold">250 000 Ft</span>
-            <span class="text-white/70">/hó-tól</span>
+            <span class="text-white/90">/hó-tól</span>
           </div>
           <ul class="space-y-3 text-sm text-white/90 mb-8">
             <li class="flex items-start gap-2">
@@ -163,7 +164,7 @@ import ContactCTA from '@/components/home/ContactCTA.astro';
         <!-- Egyedi -->
         <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
           <h3 class="font-heading font-bold text-xl mb-2">Egyedi megbízás</h3>
-          <p class="text-accent text-sm font-medium mb-4">Eseti feladatok</p>
+          <p class="text-accent-light text-sm font-medium mb-4">Eseti feladatok</p>
           <div class="mb-6">
             <span class="font-heading text-3xl font-bold">50 000 Ft</span>
             <span class="text-gray-400">/alkalom-tól</span>

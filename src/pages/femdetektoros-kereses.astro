@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import metalSearch from '@/assets/upgrade/metal-search.webp';
 import Icon from '@/components/Icon.astro';
 import { metalCases, metalFaq } from '@/data/metal-detection';
 import { enquiryHref } from '@/data/catalog';
@@ -15,11 +17,11 @@ const schema = {
   description: 'Elveszett gyűrűk, ékszerek, kulcsok és alkatrészek célzott keresése, területátvizsgálás és vízparti tárgykeresés előzetes egyeztetéssel.',
 };
 ---
-<BaseLayout title="Fémdetektoros keresés – gyűrű, ékszer, kulcs | AeroScan" description="Elveszett gyűrű, ékszer, kulcs és alkatrész keresése fémdetektorral. Kerti, üzemi és vízparti feladatok, búváros keresési lehetőség. Egyedi ajánlat." ogImage="/images/upgrade/metal-search.webp">
+<BaseLayout title="Fémdetektoros keresés – gyűrű, ékszer, kulcs | AeroScan" description="Elveszett gyűrű, ékszer, kulcs és alkatrész keresése fémdetektorral. Kerti, üzemi és vízparti feladatok, búváros keresési lehetőség. Egyedi ajánlat." ogImage={metalSearch}>
   <script type="application/ld+json" set:html={JSON.stringify(schema)}/>
   <div class="upgrade">
     <section class="up-subhero">
-      <img src="/images/upgrade/metal-search.webp" alt="Fémdetektoros keresés a vízparton – generált illusztráció" width="1672" height="941" fetchpriority="high"/>
+      <Image src={metalSearch} alt="Fémdetektoros keresés a vízparton – generált illusztráció" widths={[480, 768, 1200, 1672]} sizes="100vw" fetchpriority="high" loading="eager"/>
       <div class="up-wrap">
         <nav class="up-breadcrumb" aria-label="Morzsanavigáció"><a href="/">Főoldal</a><span>/</span><a href="/#szolgaltatasok">Szolgáltatások</a><span>/ Fémdetektoros keresés</span></nav>
         <p class="up-kicker"><span class="up-badge">Új szolgáltatás</span> A felszín alatt is keresünk</p>

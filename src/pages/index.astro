@@ -1,5 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import aerialHero from '@/assets/upgrade/aerial-hero.webp';
+import metalSearch from '@/assets/upgrade/metal-search.webp';
+import diverPoster from '@/assets/upgrade/diver-poster.webp';
+import LazyVideo from '@/components/LazyVideo.astro';
 import Icon from '@/components/Icon.astro';
 import ServiceFinder from '@/components/home/ServiceFinder.astro';
 import { catalog, enquiryHref } from '@/data/catalog';
@@ -17,11 +22,10 @@ const faqs = [
   { q: 'Mit küldjek el az ajánlatkéréshez?', a: 'A települést vagy pontos helyszínt, a feladat rövid leírását, a kívánt időpontot és lehetőség szerint fotókat. Keresésnél az utolsó biztos észlelés helye és időpontja különösen hasznos.' },
 ];
 ---
-<BaseLayout title="Drónos felmérés, keresés és fémdetektor | AeroScan.hu" description="Drónos épületfelmérés, keresés-mentés, kisállatkeresés, búváros és fémdetektoros keresés, járőrszolgálat, légi fotó és videó. Kérjen egyedi ajánlatot!" ogImage="/images/upgrade/aerial-hero.webp">
+<BaseLayout title="Drónos felmérés, keresés és fémdetektor | AeroScan.hu" description="Drónos épületfelmérés, keresés-mentés, kisállatkeresés, búváros és fémdetektoros keresés, járőrszolgálat, légi fotó és videó. Kérjen egyedi ajánlatot!" ogImage={aerialHero}>
   <div class="upgrade">
     <section class="up-hero" aria-labelledby="hero-title">
-      <img class="up-hero-image" src="/images/upgrade/aerial-hero.webp" alt="Drón egy hajnali folyóvölgy felett – generált illusztráció" width="1672" height="941" fetchpriority="high" />
-      <video class="up-hero-video" id="hero-film" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="/videok/aeroscan-hero.mp4"></video>
+      <Image class="up-hero-image" src={aerialHero} alt="Drón egy hajnali folyóvölgy felett – generált illusztráció" widths={[480, 768, 1200, 1672]} sizes="100vw" quality={62} fetchpriority="high" loading="eager" />
       <div class="up-hero-shade"></div>
       <div class="up-hero-copy up-wrap">
         <p class="up-kicker"><span class="status-dot"></span> AeroScan / Levegőben. Földön. Víz alatt.</p>
@@ -29,20 +33,20 @@ const faqs = [
         <p class="up-hero-intro">Egy épület rejtett hibája. Egy elveszett érték.<br class="desktop-break"/> Egy keresés, ahol minden részlet számít.<br/>Technológiával segítünk megtalálni a következő lépést.</p>
         <div class="up-actions"><a class="up-button" href="#szolgaltatasok">Fedezze fel szolgáltatásainkat <Icon/></a><a class="up-button up-button-ghost" href="/kapcsolat">Beszéljünk a feladatról <Icon/></a></div>
       </div>
-      <div class="up-hero-bottom up-wrap"><p>Drónos felmérés & keresés<br/><span>Országosan, előzetes egyeztetéssel</span></p><a href="#szolgaltatasok">7 szolgáltatás. Egy csapat. <span>↓</span></a><div class="up-film-control"><button type="button" id="film-toggle" aria-controls="hero-film" aria-label="Háttérvideó lejátszása" hidden>▶ Háttérvideó</button><span class="up-image-note">Generált kép és GROK-videó</span><span id="film-status" role="status"></span></div></div>
+      <div class="up-hero-bottom up-wrap"><p>Drónos felmérés & keresés<br/><span>Országosan, előzetes egyeztetéssel</span></p><a href="#szolgaltatasok">7 szolgáltatás. Egy csapat. <span>↓</span></a><div class="up-film-control"><button type="button" id="film-toggle" data-src="/videok/aeroscan-hero.mp4" aria-label="Háttérvideó lejátszása" hidden>▶ Háttérvideó</button><span class="up-image-note">Generált kép és GROK-videó</span><span id="film-status" role="status"></span></div></div>
     </section>
     <nav class="up-service-strip" aria-label="Összes szolgáltatás"><div class="up-wrap">{catalog.map(s => <a href={s.href}>{s.short}{s.id === 'femdetektor' && <span>ÚJ</span>}</a>)}</div></nav>
     <section class="up-section up-wrap" id="szolgaltatasok">
       <div class="up-section-heading"><div><p class="up-kicker">01 / Szolgáltatásaink</p><h2>Minden feladat más.<br/><span>A figyelem ugyanaz.</span></h2></div><p>A magasból átláthatóvá tesszük. A földön és a víz alatt célzottan keressük. Válassza ki, hol segíthetünk.</p></div>
       <div class="up-services-grid">{catalog.map(s => <a class:list={['up-service-card', { 'up-service-new': s.id === 'femdetektor' }]} href={s.href}>
-        <div class="up-card-image"><img src={s.image} alt={s.alt} width="720" height="480" loading="lazy" decoding="async"/><span class="up-card-number">{s.number} / {s.id === 'femdetektor' ? 'ÚJ SZOLGÁLTATÁS' : s.category}</span><span class="up-card-arrow"><Icon/></span></div>
+        <div class="up-card-image"><Image src={s.image} alt={s.alt} widths={[390, 640, 780]} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" loading="lazy" decoding="async"/><span class="up-card-number">{s.number} / {s.id === 'femdetektor' ? 'ÚJ SZOLGÁLTATÁS' : s.category}</span><span class="up-card-arrow"><Icon/></span></div>
         <div class="up-card-body"><h3>{s.title}</h3><p>{s.description}</p><ul>{s.tags.map(tag => <li>{tag}</li>)}</ul></div>
       </a>)}</div>
       <p class="up-caption">A szemléltető szolgáltatásképek illusztrációk. A búváros képkocka a bemutatóvideóból származik.</p>
     </section>
     <ServiceFinder/>
     <section class="up-metal-feature">
-      <img src="/images/upgrade/metal-search.webp" alt="Fémdetektor és gyűrű a vízparton – generált illusztráció" width="1672" height="941" loading="lazy"/>
+      <Image src={metalSearch} alt="Fémdetektor és gyűrű a vízparton – generált illusztráció" widths={[480, 768, 1200, 1672]} sizes="100vw" loading="lazy"/>
       <div class="up-wrap"><div class="up-metal-copy"><p class="up-kicker"><span class="up-badge">Új</span> Fémdetektoros keresés</p><h2>Apró tárgy.<br/><span>Óriási jelentőség.</span></h2><p>Egy karikagyűrű több, mint egy fémdarab. Segítünk felmérni, hogyan kereshető meg az elveszett ékszer, kulcs vagy alkatrész — a kerttől a vízpartig.</p><div class="up-actions"><a class="up-button" href="/femdetektoros-kereses">Miben segít a fémdetektor? <Icon/></a><a class="up-text-link" href={enquiryHref('femdetektor')}>Keresést szeretnék kérni <Icon/></a></div><span class="up-image-note">Generált illusztráció · A megtalálás nem garantálható.</span></div></div>
     </section>
     <section class="up-section up-wrap" id="rolunk">
@@ -55,26 +59,53 @@ const faqs = [
       ['Egyeztetjük az ajánlatot', 'Előre tisztázzuk a terjedelmet, a költségeket és az átadandó anyagokat.'],
       ['Elvégezzük és összefoglaljuk', 'A megállapodás szerinti munkát és dokumentációt áttekinthetően adjuk át.'],
     ].map(([title,text],i) => <li><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></div></section>
-    <section class="up-section up-wrap up-video-section"><div class="up-video-frame"><video controls playsinline preload="none" poster="/images/upgrade/diver-poster.webp" aria-label="Búváros keresés bemutatóvideó"><source src="/videok/Balaton-buvar-kereses.mp4" type="video/mp4"/>A videó megtekintéséhez használjon korszerű böngészőt.</video><p class="up-caption">Búváros keresés / Bemutatóvideó</p></div><div><p class="up-kicker">A felszín csak a kezdet</p><h2>Más közeg.<br/><span>Ugyanaz a cél.</span></h2><p>A parton eltűnt gyűrűt másképp keressük, mint a mólóról vízbe esett telefont. Ezért kapcsoljuk össze a légi, földi és búváros keresési lehetőségeket.</p><a class="up-text-link" href="/kereses-buvarral">Ismerje meg a búváros keresést <Icon/></a></div></section>
+    <section class="up-section up-wrap up-video-section"><div class="up-video-frame"><LazyVideo src="/videok/Balaton-buvar-kereses.mp4" poster={diverPoster} label="Búváros keresés bemutatóvideó" sizes="(max-width: 600px) 100vw, 55vw"/><p class="up-caption">Búváros keresés / Bemutatóvideó</p></div><div><p class="up-kicker">A felszín csak a kezdet</p><h2>Más közeg.<br/><span>Ugyanaz a cél.</span></h2><p>A parton eltűnt gyűrűt másképp keressük, mint a mólóról vízbe esett telefont. Ezért kapcsoljuk össze a légi, földi és búváros keresési lehetőségeket.</p><a class="up-text-link" href="/kereses-buvarral">Ismerje meg a búváros keresést <Icon/></a></div></section>
     <section class="up-section up-faq-section"><div class="up-wrap up-faq-grid"><div><p class="up-kicker">04 / Jó kérdések</p><h2>Amit érdemes<br/><span>előre tudni.</span></h2><p>Nem találta a választ?<br/><a class="up-text-link" href="tel:+36305696550">+36 30 569 6550 <Icon/></a></p></div><div class="up-faqs">{faqs.map(f => <details><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>)}</div></div></section>
     <section class="up-coverage up-wrap"><p class="up-kicker">Helyben indulunk. Országosan gondolkodunk.</p><h2>Győrtől a Balatonig.<br/>És ahol a feladat van.</h2><p>Bodonhelyi kiindulóponttal, egyedileg egyeztetett kiszállással.</p><nav aria-label="Szolgáltatási helyszínek">{[['Győr','gyor'],['Sopron','sopron'],['Tatabánya','tatabanya'],['Budapest','budapest'],['Dunaújváros','dunaujvaros'],['Szeged','szeged'],['Pécs','pecs'],['Debrecen','debrecen']].map(([name,slug]) => <a href={`/${slug}`}>{name} <Icon/></a>)}</nav></section>
     <section class="up-final"><div class="up-wrap"><p class="up-kicker">Kezdjük egy beszélgetéssel</p><h2>Mutassa meg a feladatot.<br/><span>Keressük meg a megoldást.</span></h2><div class="up-actions"><a class="up-button" href="/kapcsolat">Egyedi ajánlatot kérek <Icon/></a><a class="up-phone" href="tel:+36305696550">+36 30 569 6550</a></div><p>Eltűnt személy vagy közvetlen életveszély esetén: <a href="tel:112">112</a>.</p></div></section>
   </div>
 </BaseLayout>
 <script>
-  const film = document.querySelector<HTMLVideoElement>('#hero-film');
+  // A <video> element in the markup costs ~1s of first paint, so it is built on demand.
   const toggle = document.querySelector<HTMLButtonElement>('#film-toggle');
+  const shade = document.querySelector<HTMLElement>('.up-hero-shade');
   const status = document.querySelector<HTMLElement>('#film-status');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (film && toggle) {
+  let film: HTMLVideoElement | null = null;
+
+  if (toggle && shade) {
     toggle.hidden = false;
     const syncButton = () => {
-      toggle.textContent = film.paused ? '▶ Háttérvideó' : 'Ⅱ Szünet';
-      toggle.setAttribute('aria-label', film.paused ? 'Háttérvideó lejátszása' : 'Háttérvideó szüneteltetése');
+      const paused = !film || film.paused;
+      toggle.textContent = paused ? '▶ Háttérvideó' : 'Ⅱ Szünet';
+      toggle.setAttribute('aria-label', paused ? 'Háttérvideó lejátszása' : 'Háttérvideó szüneteltetése');
     };
+    const build = () => {
+      const video = document.createElement('video');
+      video.className = 'up-hero-video';
+      video.id = 'hero-film';
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.tabIndex = -1;
+      video.setAttribute('aria-hidden', 'true');
+      video.src = toggle.dataset.src || '';
+      video.addEventListener('playing', () => { video.classList.add('is-playing'); syncButton(); });
+      video.addEventListener('pause', syncButton);
+      video.addEventListener('error', () => {
+        video.classList.remove('is-playing');
+        if (status) status.textContent = 'A videó nem tölthető be.';
+        syncButton();
+      });
+      new IntersectionObserver(entries => { if (!entries[0].isIntersecting) video.pause(); }, { threshold: 0 }).observe(video);
+      shade.before(video);
+      toggle.setAttribute('aria-controls', 'hero-film');
+      return video;
+    };
+
     toggle.addEventListener('click', async () => {
-      if (!film.paused) { film.pause(); return; }
-      if (!film.src) film.src = film.dataset.src || '';
+      if (film && !film.paused) { film.pause(); return; }
+      film ??= build();
       try {
         await film.play();
         if (status) status.textContent = '';
@@ -84,15 +115,8 @@ const faqs = [
         syncButton();
       }
     });
-    film.addEventListener('playing', () => { film.classList.add('is-playing'); syncButton(); });
-    film.addEventListener('pause', syncButton);
-    film.addEventListener('error', () => {
-      film.classList.remove('is-playing');
-      if (status) status.textContent = 'A videó nem tölthető be.';
-      syncButton();
-    });
-    document.addEventListener('visibilitychange', () => { if (document.hidden) film.pause(); });
-    reducedMotion.addEventListener('change', event => { if (event.matches) film.pause(); });
-    new IntersectionObserver(entries => { if (!entries[0].isIntersecting) film.pause(); }, { threshold: 0 }).observe(film);
+
+    document.addEventListener('visibilitychange', () => { if (document.hidden) film?.pause(); });
+    reducedMotion.addEventListener('change', event => { if (event.matches) film?.pause(); });
   }
 </script>

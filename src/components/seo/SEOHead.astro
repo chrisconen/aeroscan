@@ -1,9 +1,12 @@
 ---
+import { Font, getImage } from 'astro:assets';
+import defaultOgImage from '@/assets/kereses-mentes-kutya-cica.png';
+
 interface Props {
   title: string;
   description: string;
   canonicalUrl?: string;
-  ogImage?: string;
+  ogImage?: ImageMetadata | string;
   type?: 'website' | 'article';
 }
 
@@ -11,9 +14,15 @@ const {
   title,
   description,
   canonicalUrl = new URL(Astro.url.pathname, Astro.site).href,
-  ogImage = '/images/dronos_kereses_mentes_kutya_cica.png',
+  ogImage = defaultOgImage,
   type = 'website',
 } = Astro.props;
+
+// Social cards cap out around 1200px wide; serving the full-size source wastes bytes.
+const ogSrc = typeof ogImage === 'string'
+  ? ogImage
+  : (await getImage({ src: ogImage, width: 1200, format: 'jpeg', quality: 80 })).src;
+const ogUrl = new URL(ogSrc, Astro.site).href;
 
 const siteName = 'AeroScan - Drónos keresés és mentés, épületfelmérés, fotózás és videózás';
 const fullTitle = title === 'Főoldal' ? siteName : title.includes('AeroScan') ? title : `${title} | AeroScan`;
@@ -33,22 +42,18 @@ const fullTitle = title === 'Főoldal' ? siteName : title.includes('AeroScan') ?
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:site_name" content={siteName} />
-<meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+<meta property="og:image" content={ogUrl} />
 <meta property="og:locale" content="hu_HU" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+<meta name="twitter:image" content={ogUrl} />
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700;800;900&family=Caveat:wght@400;500&display=swap"
-  rel="stylesheet"
-/>
+<!-- Fonts (self-hosted by Astro) -->
+<Font cssVariable="--font-roboto" preload />
+<Font cssVariable="--font-manrope" preload />

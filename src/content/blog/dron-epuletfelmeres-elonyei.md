@@ -2,7 +2,7 @@
 title: "A drón épületfelmérés előnyei - hatékony, biztonságos állapotfelmérés"
 description: "Fedezd fel a drónos épületfelmérés előnyeit: gyorsaság, pontosság, biztonság és költséghatékonyság. Az AeroScan forradalmi technológiával kínál megoldást."
 pubDate: 2025-05-15
-heroImage: "/images/drón_épületfelmérés.webp"
+heroImage: "../../assets/epuletfelmeres.webp"
 category: "Drónos felmérések"
 categories: ["Költséghatékonyság és hatékonyság", "Drónos felmérések"]
 tags: ["épületfelmérés", "drón", "állapotfelmérés", "költséghatékonyság"]

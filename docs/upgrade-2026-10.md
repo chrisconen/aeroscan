@@ -43,3 +43,9 @@ Long-term: add new services through `catalog.ts`; keep commercial feasibility de
 - `python scripts/verify-redesign.py`: 29 routes on desktop and mobile plus existing contact validation and cookie behavior. No real enquiry is submitted.
 - Browser screenshots and JSON results live under ignored `artifacts/upgrade` and `artifacts/redesign`.
 - Independent source review found missing illustration disclosure on city service cards; alt text and a visible caption were added.
+
+## Publication result
+
+Code commit `ab9ff26` was pushed to the existing `main` branch and deployed by the existing Cloudflare Pages Git integration. Production deployment `154b9338-600d-45b3-9d6d-a471f3f15fca` became active at `https://aeroscan.hu`.
+
+Live browser checks passed for the homepage and both new service pages at 1440px and 390px: HTTP 200, one H1, no horizontal overflow and no JavaScript errors. The seven homepage services, detector filtering and preselected enquiry were verified. The deployed video returned HTTP 200 with the expected 3,464,299 bytes; both new pages appear in the live sitemap. Local regression covered 58 page/viewport combinations without failures. Evidence: `artifacts/upgrade/live-verification.json`.

@@ -11,6 +11,6 @@
 - [x] Create `src/pages/femdetektoros-kereses.astro` and `src/pages/dronos-foto-video.astro`; integrate navigation and contact service selection.
 - [x] Optimize generated photographic assets into local WebP files, preserve provenance, and attempt the requested Grok video.
 - [x] Build and verify new interactions, all routes, mobile layout, reduced motion, metadata, keyboard navigation and no-JavaScript fallback. Never send a real enquiry during tests.
-- [ ] Publish through the existing AeroScan deployment when available and verify the live result.
+- [x] Publish through the existing AeroScan deployment when available and verify the live result.
 
 Trust boundaries: Formspree handles submitted personal data; external maps/fonts remain existing integrations. URL parameters may select only known service IDs and are never inserted as HTML. Generated imagery is illustration, not documentary evidence. Detector feasibility, permissions, terrain and recoverability need individual assessment. No archaeology, explosive clearance, utility safety certification or guaranteed recovery is advertised.

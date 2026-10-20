@@ -17,8 +17,8 @@ const { city } = Astro.props;
       </h2>
       <p class="text-text-light text-lg max-w-2xl mx-auto">
         {city
-          ? `Professzionális drónos megoldások ${city} és környékén — épületfelmérés, keresés-mentés, járőrözés és légi felvételek.`
-          : 'Professzionális drónos megoldások épületfelméréshez, keresés-mentéshez és felügyelethez.'}
+          ? `Drónos, fémdetektoros és búváros szolgáltatások ${city} és környékén, a feladat és a kiszállás előzetes egyeztetésével.`
+          : 'Drónos felmérés, fémdetektoros és búváros keresés, légi felderítés és felvételek.'}
       </p>
     </div>
 
@@ -36,7 +36,7 @@ const { city } = Astro.props;
             <div class="aspect-[4/3] overflow-hidden">
               <img
                 src={service.image}
-                alt={service.title}
+                alt={service.alt}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
@@ -53,5 +53,6 @@ const { city } = Astro.props;
         </a>
       ))}
     </div>
+    <p class="text-xs text-text-light mt-5">A szolgáltatásképek szemléltető illusztrációk; a búváros képkocka a bemutatóvideóból származik.</p>
   </div>
 </section>

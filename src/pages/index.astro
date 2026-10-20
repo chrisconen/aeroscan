@@ -1,48 +1,98 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Icon from '@/components/Icon.astro';
+import ServiceFinder from '@/components/home/ServiceFinder.astro';
+import { catalog, enquiryHref } from '@/data/catalog';
+import '@/styles/upgrade.css';
+const reasons = [
+  { icon: 'search', title: 'A feladathoz választunk eszközt.', text: 'Drón, földi fémdetektor vagy búváros keresés: a helyszín és a cél alapján egyeztetjük a használható módszert.' },
+  { icon: 'document', title: 'Átlátható keretekkel dolgozunk.', text: 'A területet, a vállalt feladatot, a díjazást és az átadandó anyagokat a munka megkezdése előtt tisztázzuk.' },
+  { icon: 'shield', title: 'A biztonság az első lépés.', text: 'A hozzáférést, a repülési és helyszíni feltételeket, valamint az érintettek jogosultságait előre ellenőrizzük.' },
+  { icon: 'people', title: 'Közvetlenül velünk egyeztet.', text: 'Elmondhatja, mi történt és mire van szüksége. Érthető választ adunk a lehetőségekről és a korlátokról is.' },
+];
+const faqs = [
+  { q: 'Milyen területen vállalnak munkát?', a: 'Bodonhelyről, Győr-Moson-Sopron megyéből indulva, a feladat és a kapacitás alapján országosan egyeztetünk kiszállást. Győr, Sopron, Tatabánya, Budapest és a Balaton térsége mellett távolabbi helyszínnel is megkereshet minket.' },
+  { q: 'Mennyibe kerül a drónos felmérés vagy a keresés?', a: 'Az ár a feladat típusától, a helyszíntől, a terület nagyságától, az utazástól és a kért dokumentációtól függ. Küldje el a részleteket, és az elvállalható munkára egyedi ajánlatot adunk.' },
+  { q: 'Milyen gyorsan tudnak elindulni?', a: 'Az indulás a szabad kapacitástól, az időjárástól, a távolságtól és a szükséges jogosultságoktól függ. Sürgős keresésnél telefonon egyeztessünk. Közvetlen életveszély esetén először a 112-t hívja.' },
+  { q: 'Mit küldjek el az ajánlatkéréshez?', a: 'A települést vagy pontos helyszínt, a feladat rövid leírását, a kívánt időpontot és lehetőség szerint fotókat. Keresésnél az utolsó biztos észlelés helye és időpontja különösen hasznos.' },
+];
 ---
-<BaseLayout title="Főoldal" description="AeroScan – Dróntechnológia a biztonságosabb holnapért. Keresés és mentés, épület-állapotfelmérés és professzionális drónmegoldások." ogImage="/images/redesign/landscape-plate.webp">
-  <div class="home-canvas">
-    <section class="home-hero plate" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Dróntechnológia<br/>a biztonságosabb holnapért</p>
-        <h1 id="hero-title">A levegőből<br/>többet látunk</h1>
-        <p class="hero-description">Keresés és mentés. Épület állapotfelmérés. Professzionális<br class="desktop-break"/> drónmegoldások, amikor a részletek számítanak.</p>
-        <div class="hero-actions"><a href="#szolgaltatasok" class="pill">Szolgáltatások <Icon /></a><a href="#rolunk" class="about-link"><span class="circle"><Icon name="play"/></span> Rólunk</a></div>
+<BaseLayout title="Drónos felmérés, keresés és fémdetektor | AeroScan.hu" description="Drónos épületfelmérés, keresés-mentés, kisállatkeresés, búváros és fémdetektoros keresés, járőrszolgálat, légi fotó és videó. Kérjen egyedi ajánlatot!" ogImage="/images/upgrade/aerial-hero.webp">
+  <div class="upgrade">
+    <section class="up-hero" aria-labelledby="hero-title">
+      <img class="up-hero-image" src="/images/upgrade/aerial-hero.webp" alt="Drón egy hajnali folyóvölgy felett – generált illusztráció" width="1672" height="941" fetchpriority="high" />
+      <video class="up-hero-video" id="hero-film" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="/videok/aeroscan-hero.mp4"></video>
+      <div class="up-hero-shade"></div>
+      <div class="up-hero-copy up-wrap">
+        <p class="up-kicker"><span class="status-dot"></span> AeroScan / Levegőben. Földön. Víz alatt.</p>
+        <h1 id="hero-title">Többet látni.<br/><span>Közelebb jutni.</span></h1>
+        <p class="up-hero-intro">Egy épület rejtett hibája. Egy elveszett érték.<br class="desktop-break"/> Egy keresés, ahol minden részlet számít.<br/>Technológiával segítünk megtalálni a következő lépést.</p>
+        <div class="up-actions"><a class="up-button" href="#szolgaltatasok">Fedezze fel szolgáltatásainkat <Icon/></a><a class="up-button up-button-ghost" href="/kapcsolat">Beszéljünk a feladatról <Icon/></a></div>
       </div>
-      <div class="hero-target" aria-hidden="true">Keresünk<br/>Segítünk<br/>Megtaláljuk</div>
-      <div class="telemetry" aria-hidden="true">47.4979° N<br/>19.0402° E<br/>ALT 120 M<span></span></div>
-      <p class="hero-footnote">A technológia<br/>életeket menthet</p>
-      <p class="hero-signature">Emberekért.<br/><span>Biztonságért.</span><br/><span>Magasabbról.</span></p>
+      <div class="up-hero-bottom up-wrap"><p>Drónos felmérés & keresés<br/><span>Országosan, előzetes egyeztetéssel</span></p><a href="#szolgaltatasok">7 szolgáltatás. Egy csapat. <span>↓</span></a><div class="up-film-control"><button type="button" id="film-toggle" aria-controls="hero-film" aria-label="Háttérvideó lejátszása" hidden>▶ Háttérvideó</button><span class="up-image-note">Generált kép és GROK-videó</span><span id="film-status" role="status"></span></div></div>
     </section>
-    <section class="home-services plate" id="szolgaltatasok" aria-label="Kiemelt szolgáltatások">
-      <a href="/kereses-mentes" class="feature-service">
-        <Icon name="mountain" class="service-icon"/>
-        <div><h2><span>Drónos</span>Keresés &amp; mentés</h2><p>Gyorsabb felderítés.<br/>Nagyobb esély. Valós segítség.</p></div>
-        <span class="circle service-arrow"><Icon/></span><span class="service-note">Hőkamerás<br/>felderítés</span>
-      </a>
-      <a href="/epuletfelmeres" class="feature-service">
-        <Icon name="building" class="service-icon"/>
-        <div><h2><span>Drónos</span>Épület állapotfelmérés</h2><p>Precíz adatok.<br/>Biztonságos döntések.<br/>Hatékonyabb üzemeltetés.</p></div>
-        <span class="circle service-arrow"><Icon/></span><span class="scan-labels" aria-hidden="true">3D modell<br/>Hőtérkép<br/>Ortofotó<br/>Pontfelhő<br/><small>Részletes elemzés</small></span>
-      </a>
+    <nav class="up-service-strip" aria-label="Összes szolgáltatás"><div class="up-wrap">{catalog.map(s => <a href={s.href}>{s.short}{s.id === 'femdetektor' && <span>ÚJ</span>}</a>)}</div></nav>
+    <section class="up-section up-wrap" id="szolgaltatasok">
+      <div class="up-section-heading"><div><p class="up-kicker">01 / Szolgáltatásaink</p><h2>Minden feladat más.<br/><span>A figyelem ugyanaz.</span></h2></div><p>A magasból átláthatóvá tesszük. A földön és a víz alatt célzottan keressük. Válassza ki, hol segíthetünk.</p></div>
+      <div class="up-services-grid">{catalog.map(s => <a class:list={['up-service-card', { 'up-service-new': s.id === 'femdetektor' }]} href={s.href}>
+        <div class="up-card-image"><img src={s.image} alt={s.alt} width="720" height="480" loading="lazy" decoding="async"/><span class="up-card-number">{s.number} / {s.id === 'femdetektor' ? 'ÚJ SZOLGÁLTATÁS' : s.category}</span><span class="up-card-arrow"><Icon/></span></div>
+        <div class="up-card-body"><h3>{s.title}</h3><p>{s.description}</p><ul>{s.tags.map(tag => <li>{tag}</li>)}</ul></div>
+      </a>)}</div>
+      <p class="up-caption">A szemléltető szolgáltatásképek illusztrációk. A búváros képkocka a bemutatóvideóból származik.</p>
     </section>
-    <section class="home-perspective plate" id="rolunk">
-      <div class="perspective-copy"><h2>Új perspektíva.<br/>Valódi eredmények.</h2><p>A dróntechnológia lehetőséget ad arra, hogy gyorsabban,<br class="desktop-break"/> biztonságosabban és pontosabban lássunk rá a világra.<br class="desktop-break"/> Az AeroScan.hu-nál ezt a lehetőséget a közösség,<br class="desktop-break"/> az infrastruktúra és a biztonság szolgálatába állítjuk.</p><a href="#kuldetesunk" class="pill pill-outline">Miért AeroScan? <Icon/></a></div>
-      <div class="radar" aria-hidden="true"><i></i><i></i><i></i></div><p class="perspective-caption">Szélesebb látókör.<br/>Biztonságosabb jövő.</p><p class="perspective-side" aria-hidden="true">Higher<br/>sight<br/>safer<br/>tomorrow</p>
+    <ServiceFinder/>
+    <section class="up-metal-feature">
+      <img src="/images/upgrade/metal-search.webp" alt="Fémdetektor és gyűrű a vízparton – generált illusztráció" width="1672" height="941" loading="lazy"/>
+      <div class="up-wrap"><div class="up-metal-copy"><p class="up-kicker"><span class="up-badge">Új</span> Fémdetektoros keresés</p><h2>Apró tárgy.<br/><span>Óriási jelentőség.</span></h2><p>Egy karikagyűrű több, mint egy fémdarab. Segítünk felmérni, hogyan kereshető meg az elveszett ékszer, kulcs vagy alkatrész — a kerttől a vízpartig.</p><div class="up-actions"><a class="up-button" href="/femdetektoros-kereses">Miben segít a fémdetektor? <Icon/></a><a class="up-text-link" href={enquiryHref('femdetektor')}>Keresést szeretnék kérni <Icon/></a></div><span class="up-image-note">Generált illusztráció · A megtalálás nem garantálható.</span></div></div>
     </section>
-    <section class="home-stats plate" aria-label="Az AeroScan számokban">
-      <div><Icon name="clock"/><p><strong>24/7</strong><span>Bevetésre készen</span></p></div>
-      <div><Icon name="people"/><p><strong>100+</strong><span>Sikeres küldetés</span></p></div>
-      <div><Icon name="map"/><p><strong>Országos</strong><span>lefedettség</span></p></div>
-      <div><Icon name="shield"/><p><span>Professzionális<br/>eszközpark</span></p></div>
-      <div><Icon name="check"/><p><span>Hiteles adatok<br/>és szakértői elemzés</span></p></div>
+    <section class="up-section up-wrap" id="rolunk">
+      <div class="up-section-heading"><div><p class="up-kicker">02 / Miért az AeroScan?</p><h2>Az eszköz mögött<br/><span>ott az odafigyelés.</span></h2></div><p>A jó megoldás egy pontos kérdéssel kezdődik: mire van valóban szüksége? Innen építjük fel a munkát.</p></div>
+      <div class="up-reasons">{reasons.map((r,i) => <article><div class="up-reason-top"><Icon name={r.icon}/><span>0{i+1}</span></div><h3>{r.title}</h3><p>{r.text}</p></article>)}</div>
     </section>
-    <section class="home-mission plate" id="kuldetesunk">
-      <div class="mission-copy"><p class="section-label">Küldetésünk</p><h2>Technológiával<br/>az emberekért</h2><p>Hiszünk abban, hogy a dróntechnológia nem csupán eszköz,<br class="desktop-break"/> hanem felelősség is. Küldetésünk, hogy tudásunkkal,<br class="desktop-break"/> tapasztalatunkkal és modern megoldásainkkal biztonságosabbá<br class="desktop-break"/> tegyük az emberek mindennapjait – a levegőből, a földön.</p><div class="mission-signature">AeroScan.hu<span>csapat</span></div></div>
-      <blockquote><span>“</span>Mert mindig<br/>van magasabb<br/>nézőpont.</blockquote>
-    </section>
-    <section class="home-contact plate"><div><h2>Készen áll egy új nézőpontra?</h2><p>Beszéljük meg, hogyan segíthetünk Önnek!</p></div><a href="/kapcsolat" class="pill">Kapcsolatfelvétel <Icon/></a></section>
+    <section class="up-workflow"><div class="up-wrap"><div class="up-section-heading"><div><p class="up-kicker">03 / Így dolgozunk</p><h2>Az első hívástól<br/>a következő lépésig.</h2></div><a class="up-text-link" href="/kapcsolat">Indítsuk el a beszélgetést <Icon/></a></div><ol class="up-steps">{[
+      ['Elmondja a feladatot', 'Helyszín, cél, időpont. Keresésnél az utolsó biztos információt is átbeszéljük.'],
+      ['Megtervezzük a munkát', 'Megvizsgáljuk a körülményeket, a vállalhatóságot és a szükséges jogosultságokat.'],
+      ['Egyeztetjük az ajánlatot', 'Előre tisztázzuk a terjedelmet, a költségeket és az átadandó anyagokat.'],
+      ['Elvégezzük és összefoglaljuk', 'A megállapodás szerinti munkát és dokumentációt áttekinthetően adjuk át.'],
+    ].map(([title,text],i) => <li><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></div></section>
+    <section class="up-section up-wrap up-video-section"><div class="up-video-frame"><video controls playsinline preload="none" poster="/images/upgrade/diver-poster.webp" aria-label="Búváros keresés bemutatóvideó"><source src="/videok/Balaton-buvar-kereses.mp4" type="video/mp4"/>A videó megtekintéséhez használjon korszerű böngészőt.</video><p class="up-caption">Búváros keresés / Bemutatóvideó</p></div><div><p class="up-kicker">A felszín csak a kezdet</p><h2>Más közeg.<br/><span>Ugyanaz a cél.</span></h2><p>A parton eltűnt gyűrűt másképp keressük, mint a mólóról vízbe esett telefont. Ezért kapcsoljuk össze a légi, földi és búváros keresési lehetőségeket.</p><a class="up-text-link" href="/kereses-buvarral">Ismerje meg a búváros keresést <Icon/></a></div></section>
+    <section class="up-section up-faq-section"><div class="up-wrap up-faq-grid"><div><p class="up-kicker">04 / Jó kérdések</p><h2>Amit érdemes<br/><span>előre tudni.</span></h2><p>Nem találta a választ?<br/><a class="up-text-link" href="tel:+36305696550">+36 30 569 6550 <Icon/></a></p></div><div class="up-faqs">{faqs.map(f => <details><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>)}</div></div></section>
+    <section class="up-coverage up-wrap"><p class="up-kicker">Helyben indulunk. Országosan gondolkodunk.</p><h2>Győrtől a Balatonig.<br/>És ahol a feladat van.</h2><p>Bodonhelyi kiindulóponttal, egyedileg egyeztetett kiszállással.</p><nav aria-label="Szolgáltatási helyszínek">{[['Győr','gyor'],['Sopron','sopron'],['Tatabánya','tatabanya'],['Budapest','budapest'],['Dunaújváros','dunaujvaros'],['Szeged','szeged'],['Pécs','pecs'],['Debrecen','debrecen']].map(([name,slug]) => <a href={`/${slug}`}>{name} <Icon/></a>)}</nav></section>
+    <section class="up-final"><div class="up-wrap"><p class="up-kicker">Kezdjük egy beszélgetéssel</p><h2>Mutassa meg a feladatot.<br/><span>Keressük meg a megoldást.</span></h2><div class="up-actions"><a class="up-button" href="/kapcsolat">Egyedi ajánlatot kérek <Icon/></a><a class="up-phone" href="tel:+36305696550">+36 30 569 6550</a></div><p>Eltűnt személy vagy közvetlen életveszély esetén: <a href="tel:112">112</a>.</p></div></section>
   </div>
 </BaseLayout>
+<script>
+  const film = document.querySelector<HTMLVideoElement>('#hero-film');
+  const toggle = document.querySelector<HTMLButtonElement>('#film-toggle');
+  const status = document.querySelector<HTMLElement>('#film-status');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (film && toggle) {
+    toggle.hidden = false;
+    const syncButton = () => {
+      toggle.textContent = film.paused ? '▶ Háttérvideó' : 'Ⅱ Szünet';
+      toggle.setAttribute('aria-label', film.paused ? 'Háttérvideó lejátszása' : 'Háttérvideó szüneteltetése');
+    };
+    toggle.addEventListener('click', async () => {
+      if (!film.paused) { film.pause(); return; }
+      if (!film.src) film.src = film.dataset.src || '';
+      try {
+        await film.play();
+        if (status) status.textContent = '';
+      } catch {
+        if (status) status.textContent = 'A videó most nem indítható.';
+        film.classList.remove('is-playing');
+        syncButton();
+      }
+    });
+    film.addEventListener('playing', () => { film.classList.add('is-playing'); syncButton(); });
+    film.addEventListener('pause', syncButton);
+    film.addEventListener('error', () => {
+      film.classList.remove('is-playing');
+      if (status) status.textContent = 'A videó nem tölthető be.';
+      syncButton();
+    });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) film.pause(); });
+    reducedMotion.addEventListener('change', event => { if (event.matches) film.pause(); });
+    new IntersectionObserver(entries => { if (!entries[0].isIntersecting) film.pause(); }, { threshold: 0 }).observe(film);
+  }
+</script>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { enquiryHref } from '@/data/catalog';
+import '@/styles/upgrade.css';
+const uses = [
+  ['Ingatlan és építészet', 'Eladó ingatlan, telek, ipari épület vagy új beruházás bemutatása. A légi nézőpont segít megérteni a környezetet, az elhelyezkedést és a méretarányokat.'],
+  ['Szálláshely és turizmus', 'Szállodák, panziók, kempingek, vízparti helyszínek és turisztikai célpontok látványos bemutatása weboldalra és közösségi felületekre.'],
+  ['Vállalati bemutatkozás', 'Telephely, üzemi környezet vagy megvalósult beruházás légi képei céges bemutatkozáshoz és marketinganyagokhoz.'],
+  ['Rendezvény és helyszín', 'Szabadtéri rendezvényhelyszínek és események légi képi dokumentációja, a repülési és személyvédelmi feltételek szerint.'],
+  ['Építési folyamat', 'Egy beruházás aktuális állapotának dokumentálása, igény szerint ismétlődő felvételi pontokkal és időpontokkal.'],
+  ['Egyedi vizuális projekt', 'Tájkép, promóciós videó vagy kampányhoz készülő légi felvétel. A képi világot, az utómunkát és a kimeneti formátumot a felhasználáshoz igazítjuk.'],
+];
+---
+<BaseLayout title="Drónos fotózás és videózás – légi felvételek | AeroScan" description="Drónos fotózás és 4K videó ingatlanok, szálláshelyek, vállalkozások és rendezvények bemutatásához. Légi felvételek egyedi brief és ajánlat alapján." ogImage="/images/upgrade/aerial-hero.webp">
+  <div class="upgrade">
+    <section class="up-subhero"><img src="/images/upgrade/aerial-hero.webp" alt="Légi nézőpont egy erdős folyóvölgyben – generált illusztráció" width="1672" height="941" fetchpriority="high"/><div class="up-wrap"><nav class="up-breadcrumb" aria-label="Morzsanavigáció"><a href="/">Főoldal</a><span>/</span><a href="/#szolgaltatasok">Szolgáltatások</a><span>/ Drónos fotó és videó</span></nav><p class="up-kicker">Új nézőpont a történetéhez</p><h1>Drónos fotó és videó.<br/>Mutasson többet.</h1><p>Az épületet a környezetével együtt. A helyszínt teljes egészében. Egy vállalkozást abból a nézőpontból, amely a földről nem látható.</p><div class="up-actions"><a class="up-button" href={enquiryHref('foto')}>Légi felvételekre kérek ajánlatot <Icon/></a><a class="up-button up-button-ghost" href="/referenciak">Referenciák <Icon/></a></div><span class="up-image-note">Generált hangulati illusztráció, nem referenciafelvétel.</span></div></section>
+    <section class="up-section up-wrap"><div class="up-section-heading"><div><p class="up-kicker">Légi tartalom, valódi felhasználásra</p><h2>Mire készülnek<br/><span>a felvételek?</span></h2></div><p>A tervezést a felhasználással kezdjük: weboldal, hirdetés, közösségi média, bemutatkozó film vagy dokumentáció.</p></div><div class="up-use-cases">{uses.map(([title,text],i) => <article><span>0{i+1} / Felhasználás</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section class="up-section up-faq-section"><div class="up-wrap up-intro-grid"><div><p class="up-kicker">A jó kép előtt jó brief készül</p><h2>A formátumot<br/><span>a célhoz igazítjuk.</span></h2><p>4K videó, nagy felbontású fotó vagy közösségi felületre szánt képsor: a felbontást, a képarányt, a felvételek mennyiségét, az utómunkát és a felhasználási jogokat az ajánlatban rögzítjük.</p><p>A légi felvételek elkészíthetősége függ a helyszíntől, az időjárástól, a légtérhasználattól és az érintettek biztonságától. Az időpontot ezek figyelembevételével véglegesítjük.</p></div><aside class="up-checklist"><h3>Az ajánlatkéréshez</h3><ul><li>A helyszín címe és a bemutatandó terület.</li><li>A kívánt időpont vagy időszak.</li><li>A felhasználás célja és platformja.</li><li>Fotó, videó vagy mindkettő szükséges?</li><li>Elvárt hossz, képarány és utómunka.</li><li>Van-e meglévő arculat vagy referencia?</li></ul><a class="up-text-link" href={enquiryHref('foto')}>Elküldöm a briefet <Icon/></a></aside></div></section>
+    <section class="up-final"><div class="up-wrap"><p class="up-kicker">Győr · Sopron · Budapest · országosan egyeztethető</p><h2>Egy helyszín.<br/><span>Ezer új nézőpont.</span></h2><div class="up-actions"><a class="up-button" href={enquiryHref('foto')}>Beszéljünk a felvételről <Icon/></a><a class="up-phone" href="tel:+36305696550">+36 30 569 6550</a></div></div></section>
+  </div>
+</BaseLayout>

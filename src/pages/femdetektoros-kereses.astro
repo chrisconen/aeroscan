@@ -1,0 +1,71 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { metalCases, metalFaq } from '@/data/metal-detection';
+import { enquiryHref } from '@/data/catalog';
+import '@/styles/upgrade.css';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Fémdetektoros keresés',
+  serviceType: 'Elveszett fémtárgyak és ékszerek keresése',
+  url: 'https://aeroscan.hu/femdetektoros-kereses',
+  provider: { '@type': 'LocalBusiness', name: 'AeroScan', url: 'https://aeroscan.hu', telephone: '+36305696550' },
+  areaServed: { '@type': 'Country', name: 'Magyarország' },
+  description: 'Elveszett gyűrűk, ékszerek, kulcsok és alkatrészek célzott keresése, területátvizsgálás és vízparti tárgykeresés előzetes egyeztetéssel.',
+};
+---
+<BaseLayout title="Fémdetektoros keresés – gyűrű, ékszer, kulcs | AeroScan" description="Elveszett gyűrű, ékszer, kulcs és alkatrész keresése fémdetektorral. Kerti, üzemi és vízparti feladatok, búváros keresési lehetőség. Egyedi ajánlat." ogImage="/images/upgrade/metal-search.webp">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}/>
+  <div class="upgrade">
+    <section class="up-subhero">
+      <img src="/images/upgrade/metal-search.webp" alt="Fémdetektoros keresés a vízparton – generált illusztráció" width="1672" height="941" fetchpriority="high"/>
+      <div class="up-wrap">
+        <nav class="up-breadcrumb" aria-label="Morzsanavigáció"><a href="/">Főoldal</a><span>/</span><a href="/#szolgaltatasok">Szolgáltatások</a><span>/ Fémdetektoros keresés</span></nav>
+        <p class="up-kicker"><span class="up-badge">Új szolgáltatás</span> A felszín alatt is keresünk</p>
+        <h1>Fémdetektoros keresés.<br/>Ami elveszett,<br/>még ott lehet.</h1>
+        <p>Gyűrű a fűben. Kulcs a homokban. Alkatrész a munkaterületen. Célzott fémkeresés magánszemélyeknek és vállalkozásoknak, a helyszínhez igazított tervvel.</p>
+        <div class="up-actions"><a class="up-button" href={enquiryHref('femdetektor')}>Keresést szeretnék kérni <Icon/></a><a class="up-button up-button-ghost" href="tel:+36305696550">+36 30 569 6550</a></div>
+        <span class="up-image-note">Generált illusztráció · Minden keresés előzetes egyeztetéshez kötött.</span>
+      </div>
+    </section>
+    <section class="up-section up-wrap up-intro-grid">
+      <div><p class="up-kicker">Kis tárgy. Fontos történet.</p><h2>Nem az értékét mérjük.<br/><span>A nyomát keressük.</span></h2><p>Lehet egy pótolhatatlan karikagyűrű, egy munkához szükséges szerszám vagy egy elveszett kulcscsomó. A fémdetektor olyan helyen is adhat jelzést, ahol szemmel már nem látszik a tárgy.</p><p>A keresést az elvesztés körülményeivel kezdjük. A pontos hely és az események ismerete sokszor többet segít, mint egy nagyobb terület találomra történő átvizsgálása.</p></div>
+      <aside class="up-checklist"><h3>Ezekkel az adatokkal induljunk</h3><ul><li><strong>Mit keresünk?</strong> Anyag, méret, leírás vagy fotó.</li><li><strong>Hol veszett el?</strong> Település, térképpont, körülhatárolható terület.</li><li><strong>Mikor történt?</strong> Az utolsó biztos hely és időpont.</li><li><strong>Milyen a terep?</strong> Fű, homok, föld, vízpart vagy víz.</li><li><strong>Hozzáférhető a terület?</strong> Tulajdonos, kezelő, szükséges jogosultságok.</li></ul><a class="up-text-link" href={enquiryHref('femdetektor')}>Elküldöm a részleteket <Icon/></a></aside>
+    </section>
+    <section class="up-section up-wrap" id="lehetosegek" style="padding-top:0">
+      <div class="up-section-heading"><div><p class="up-kicker">12 felhasználási lehetőség</p><h2>Mire használható<br/><span>a fémdetektor?</span></h2></div><p>Az alábbi feladatok vállalhatóságát a keresett tárgy, a helyszín, az eszközigény és a jogosultságok alapján egyeztetjük.</p></div>
+      <div class="up-filter" role="group" aria-label="Felhasználási területek szűrése" hidden>{['Összes','Magánszemélyek','Vállalkozások','Vízpart & víz'].map((g,i) => <button type="button" data-case-filter={g} aria-pressed={i === 0 ? 'true' : 'false'} aria-controls="metal-cases">{g}</button>)}</div>
+      <p id="case-count" class="up-caption" aria-live="polite" hidden>Mind a 12 lehetőség látható.</p>
+      <div class="up-use-cases" id="metal-cases">{metalCases.map(c => <article data-case-group={c.group}><span>{c.group}</span><h3>{c.title}</h3><p>{c.text}</p><p class="up-case-detail">{c.detail}</p></article>)}</div>
+      <div class="up-notice"><h3>Meghatározott cél, tisztázott jogosultságok</h3><p>A területhasználati hozzájárulást, az örökségvédelmi előírásokat és a szükséges hatósági feltételeket a munka előtt tisztázni kell. A tulajdonosi hozzájárulás önmagában nem helyettesíti az esetleg szükséges hatósági engedélyt vagy bejelentést.</p><p>Régészeti kincskeresés, robbanótest-mentesítés és ásásbiztonságot igazoló közművizsgálat nem része ennek a szolgáltatásnak. Régészeti vagy veszélyesnek tűnő tárgy előkerülésekor a munkát meg kell állítani, és az illetékes szervvel kell egyeztetni.</p><a href="https://njt.jog.gov.hu/jogszabaly/2018-68-20-22" target="_blank" rel="noopener noreferrer">Kapcsolódó szabályozás: 68/2018. (IV. 9.) Korm. rendelet, Nemzeti Jogszabálytár ↗</a></div>
+    </section>
+    <section class="up-workflow"><div class="up-wrap"><p class="up-kicker">Így zajlik a keresés</p><h2>Rendszeresen haladunk.<br/>Minden jelzést értékelünk.</h2><ol class="up-steps">{[
+      ['Egyeztetés', 'Az elveszett tárgy, a helyszín és az utolsó biztos információ alapján felmérjük a lehetőségeket.'],
+      ['Keresési terv', 'Kijelöljük a területet, tisztázzuk a hozzáférést, az engedélyezést, az időkeretet és a díjat.'],
+      ['Helyszíni keresés', 'A terephez igazított, módszeres bejárás és a műszerjelzések értékelése következik.'],
+      ['Összefoglalás', 'Átbeszéljük az eredményt és a lehetséges folytatást. A dokumentáció formáját előre egyeztetjük.'],
+    ].map(([title,text],i) => <li><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></div></section>
+    <section class="up-section up-wrap"><div class="up-section-heading"><div><p class="up-kicker">A megfelelő eszköz a megfelelő helyen</p><h2>Fémkereső, drón<br/><span>vagy búvár?</span></h2></div></div><div class="up-method"><article><Icon name="search"/><h3>Fémdetektor a földön</h3><p>A hozzáférhető talajban, homokban vagy növényzet alatt lévő fémtárgy keresésére. A tárgy és a környezet határozza meg az érzékelhetőséget.</p></article><article><Icon name="camera"/><h3>Drón a terület áttekintésére</h3><p>Nagyobb helyszín, megközelítés vagy keresési zóna áttekintéséhez. A kamera nem lát a talajba, és nem helyettesíti a földi fémdetektort.</p><a class="up-text-link" href="/kereses-mentes">Drónos felderítés <Icon/></a></article><article><Icon name="map"/><h3>Búvár a víz alatti feladathoz</h3><p>Elsüllyedt tárgyaknál a merülési körülmények és a keresési terület alapján választunk eljárást. Műszeres támogatás külön egyeztethető.</p><a class="up-text-link" href="/kereses-buvarral">Búváros keresés <Icon/></a></article></div></section>
+    <section class="up-section up-faq-section"><div class="up-wrap up-faq-grid"><div><p class="up-kicker">Gyakori kérdések</p><h2>A keresés előtt<br/><span>tisztázzuk.</span></h2><p>Mélység, ár, engedély, eredmény.<br/>A legfontosabb tudnivalók egy helyen.</p></div><div class="up-faqs">{metalFaq.map(f => <details><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>)}</div></div></section>
+    <section class="up-final"><div class="up-wrap"><p class="up-kicker">Győr és környéke · országosan egyeztethető</p><h2>Mesélje el,<br/><span>mi veszett el.</span></h2><p>A helyszín és néhány részlet alapján átbeszéljük a következő lépést.</p><div class="up-actions"><a class="up-button" href={enquiryHref('femdetektor')}>Fémdetektoros keresést kérek <Icon/></a><a class="up-phone" href="tel:+36305696550">+36 30 569 6550</a></div><p>A megtalálás nem garantálható. A munka kereteit és költségeit előre egyeztetjük.</p></div></section>
+  </div>
+</BaseLayout>
+<script>
+  const filters = document.querySelector<HTMLElement>('.up-filter');
+  const count = document.querySelector<HTMLElement>('#case-count');
+  if (filters) filters.hidden = false;
+  if (count) count.hidden = false;
+  document.querySelectorAll<HTMLButtonElement>('[data-case-filter]').forEach(button => {
+    button.addEventListener('click', () => {
+      const group = button.dataset.caseFilter;
+      document.querySelectorAll<HTMLButtonElement>('[data-case-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+      let visible = 0;
+      document.querySelectorAll<HTMLElement>('[data-case-group]').forEach(card => {
+        card.hidden = group !== 'Összes' && card.dataset.caseGroup !== group;
+        if (!card.hidden) visible++;
+      });
+      if (count) count.textContent = `${visible} lehetőség látható${group === 'Összes' ? '.' : ` – ${group}.`}`;
+    });
+  });
+</script>

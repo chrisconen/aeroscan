@@ -1,0 +1,40 @@
+---
+import { catalog, enquiryHref } from '@/data/catalog';
+import Icon from '@/components/Icon.astro';
+const choices = [
+  { id: 'epulet', label: 'Egy épület állapotát vizsgálnám' },
+  { id: 'femdetektor', label: 'Elveszett egy ékszer vagy fémtárgy' },
+  { id: 'kisallat', label: 'Elkóborolt a kisállatom' },
+  { id: 'buvar', label: 'Vízbe esett valami értékes' },
+  { id: 'mentes', label: 'Eltűnt személy kereséséhez kérek segítséget' },
+  { id: 'jaror', label: 'Egy területet szeretnék ellenőrizni' },
+  { id: 'foto', label: 'Légi fotót vagy videót szeretnék' },
+];
+---
+<section class="up-finder up-wrap" id="feladatvalaszto" aria-labelledby="finder-title">
+  <div><p class="up-kicker">Találjuk meg a megfelelő megoldást</p><h2 id="finder-title">Miben segíthetünk?</h2><p>Néhány jó kiindulópont egy pontosabb ajánlathoz.</p></div>
+  <div class="finder-controls">
+    <label for="task-choice">Válassza ki a feladatát</label>
+    <select id="task-choice"><option value="">Mire van most szüksége?</option>{choices.map(c => <option value={c.id}>{c.label}</option>)}</select>
+    <div id="finder-result" aria-live="polite" aria-atomic="true"><p>Válasszon egy feladatot, vagy böngéssze végig az alábbi szolgáltatásokat.</p></div>
+    <div id="finder-links" hidden><a class="up-button" id="finder-enquiry" href="/kapcsolat">Egyeztessünk erről <Icon/></a><a class="up-text-link" id="finder-detail" href="#szolgaltatasok">Részletek <Icon/></a></div>
+    <noscript><p>A feladatválasztó JavaScriptet használ. Minden szolgáltatást megtalál lejjebb, vagy <a href="/kapcsolat">írjon nekünk közvetlenül</a>.</p></noscript>
+  </div>
+</section>
+<script define:vars={{ services: catalog.map(s => ({ id: s.id, title: s.title, description: s.description, href: s.href, enquiry: enquiryHref(s.id) })) }}>
+  const select = document.getElementById('task-choice');
+  select?.addEventListener('change', () => {
+    const service = services.find(s => s.id === select.value);
+    const result = document.getElementById('finder-result');
+    const links = document.getElementById('finder-links');
+    links.hidden = !service;
+    if (!service) { result.textContent = 'Válasszon egy feladatot, vagy böngéssze végig az alábbi szolgáltatásokat.'; return; }
+    const title = document.createElement('strong');
+    title.textContent = service.title;
+    const description = document.createElement('p');
+    description.textContent = service.id === 'mentes' ? 'Közvetlen veszély vagy sürgős segítség esetén hívja a 112-t. A drónos felderítés a hatósági és terepi keresést támogatja.' : service.description;
+    result.replaceChildren(title, description);
+    document.getElementById('finder-enquiry').href = service.enquiry;
+    document.getElementById('finder-detail').href = service.href;
+  });
+</script>

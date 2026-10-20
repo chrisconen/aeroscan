@@ -10,6 +10,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 BASE = 'http://127.0.0.1:4321'
 routes = ['/', '/epuletfelmeres', '/kereses-mentes', '/kereses-buvarral', '/elveszett-kisallat-kereses-dronnal', '/jaror-szolgalat', '/kapcsolat', '/referenciak', '/blog', '/impresszum', '/adatvedelmi-nyilatkozat', '/gyor', '/sopron', '/tatabanya', '/budapest', '/dunaujvaros', '/szeged', '/pecs', '/debrecen']
 routes += ['/blog/' + p.stem for p in Path('src/content/blog').glob('*.md')]
+routes += ['/femdetektoros-kereses', '/dronos-foto-video']
 if EXPERIENCES:
     routes = ['/elveszett-kisallat-kereses-dronnal', '/kereses-mentes', '/epuletfelmeres', '/jaror-szolgalat']
 report = {'pages': [], 'errors': [], 'interactions': []}

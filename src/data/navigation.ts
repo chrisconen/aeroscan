@@ -1,3 +1,5 @@
+import { catalog } from './catalog';
+
 export const mainNav = [
   { label: 'Főoldal', href: '/' },
   {
@@ -15,13 +17,7 @@ export const mainNav = [
   },
   {
     label: 'Szolgáltatások',
-    children: [
-      { label: 'Elveszett kisállat keresés', href: '/elveszett-kisallat-kereses-dronnal' },
-      { label: 'Épületfelmérés', href: '/epuletfelmeres' },
-      { label: 'Keresés-mentés', href: '/kereses-mentes' },
-      { label: 'Keresés búvárral', href: '/kereses-buvarral' },
-      { label: 'Járőrszolgálat', href: '/jaror-szolgalat' },
-    ],
+    children: catalog.map(service => ({ label: service.short, href: service.href })),
   },
   { label: 'Blog', href: '/blog' },
   { label: 'Kapcsolat', href: '/kapcsolat' },

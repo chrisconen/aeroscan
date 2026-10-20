@@ -10,7 +10,7 @@ interface Props {
 const {
   title,
   description,
-  canonicalUrl = Astro.url.href,
+  canonicalUrl = new URL(Astro.url.pathname, Astro.site).href,
   ogImage = '/images/dronos_kereses_mentes_kutya_cica.png',
   type = 'website',
 } = Astro.props;
@@ -49,6 +49,6 @@ const fullTitle = title === 'Főoldal' ? siteName : title.includes('AeroScan') ?
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&family=Caveat:wght@400;500&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700;800;900&family=Caveat:wght@400;500&display=swap"
   rel="stylesheet"
 />

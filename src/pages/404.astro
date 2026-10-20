@@ -1,0 +1,46 @@
+---
+// Without this file Cloudflare Pages answers every unknown path with the homepage
+// and HTTP 200, which turns typos into soft 404s and makes /llms.txt look malformed.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { catalog } from '@/data/catalog';
+---
+
+<BaseLayout
+  title="A keresett oldal nem található"
+  description="A megadott cím nem létezik az AeroScan weboldalán. Válasszon a szolgáltatások közül, vagy keressen minket közvetlenül."
+>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-sm uppercase tracking-widest text-accent mb-4">404</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-5">
+        Ez az oldal nem található.
+      </h1>
+      <p class="text-text-light text-lg mb-8">
+        Lehet, hogy elírás történt a címben, vagy a tartalom időközben másik oldalra került.
+        Innen tovább tud lépni:
+      </p>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+        {catalog.map(service => (
+          <li>
+            <a href={service.href} class="block rounded-xl border border-gray-200 px-4 py-3 hover:border-accent hover:text-accent transition-colors">
+              {service.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="/" class="bg-primary text-white font-semibold py-3 px-7 rounded-lg hover:bg-primary-light transition-colors">
+          Vissza a főoldalra
+        </a>
+        <a href="/kapcsolat" class="border-2 border-primary text-primary font-semibold py-3 px-7 rounded-lg hover:bg-primary hover:text-white transition-colors">
+          Kapcsolatfelvétel
+        </a>
+        <a href="tel:+36305696550" class="py-3 px-2 font-semibold text-accent hover:text-accent-dark transition-colors">
+          +36 30 569 6550
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
